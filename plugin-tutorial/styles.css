@@ -2727,22 +2727,6 @@ button {
   min-height: 238px;
 }
 
-.hero-dex {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 76px;
-  height: 76px;
-  margin: 0 auto var(--space-4);
-  border: 1px solid var(--border-soft);
-  border-radius: var(--radius-xl);
-  background:
-    radial-gradient(circle at 30% 20%, rgba(153, 206, 255, 0.2), transparent 46%),
-    var(--surface-75);
-  font-size: 2.75rem;
-  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.34);
-}
-
 .plugin-module-header {
   margin-bottom: var(--space-5);
 }
@@ -4229,13 +4213,6 @@ button {
 }
 
 @media (max-width: 720px) {
-  .hero-dex {
-    width: 56px;
-    height: 56px;
-    margin-left: 0;
-    font-size: 2rem;
-  }
-
   .scenario-grid,
   .answer-grid,
   .prompt-builder,
