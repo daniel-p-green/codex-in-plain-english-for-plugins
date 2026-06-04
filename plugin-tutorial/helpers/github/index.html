@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="GitHub in plain English: when to use it, what to ask, and what proof to expect." />
     <title>GitHub | Codex in Plain English for Plugins</title>
+    <script>
+      document.documentElement.dataset.theme = localStorage.getItem("pluginCourseTheme") || "light";
+    </script>
     <link rel="icon" href="../../favicon-trex.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="../../styles.css" />
   </head>
@@ -14,7 +17,7 @@
       <div class="top-nav-inner">
         <a href="../../" class="top-nav-brand" aria-label="Codex in Plain English for Plugins">
           <span class="top-nav-brand-dex" aria-hidden="true">🦖</span>
-          <span class="top-nav-brand-text top-nav-brand-text-full" aria-hidden="true">Codex in Plain English</span>
+          <span class="top-nav-brand-text top-nav-brand-text-full" aria-hidden="true">Codex in Plain English for Plugins</span>
           <span class="top-nav-brand-text top-nav-brand-text-compact" aria-hidden="true">Plugins</span>
         </a>
         <nav class="top-nav-links" aria-label="Primary">
@@ -34,13 +37,20 @@
       <div class="page-container helper-page" id="helperDetail"></div>
     </main>
     <footer class="footer course-footer subpage-footer">
-      <p class="footer-byline">Created by Daniel Green.</p>
-      <nav class="footer-social-links" aria-label="Daniel Green social links">
-        <a href="https://x.com/dgrreen" target="_blank" rel="me noopener">X</a>
-        <a href="https://www.linkedin.com/in/danielpgreen" target="_blank" rel="me noopener">LinkedIn</a>
-      </nav>
+      <div class="footer-credit">
+        <p class="footer-byline">Created by Daniel Green</p>
+        <nav class="footer-social-links" aria-label="Daniel Green social links">
+          <a href="https://x.com/dgrreen" target="_blank" rel="me noopener">X</a>
+          <a href="https://www.linkedin.com/in/danielpgreen" target="_blank" rel="me noopener">LinkedIn</a>
+        </nav>
+        <button class="theme-toggle footer-theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode">
+          <span class="theme-toggle-sun" aria-hidden="true">Light</span>
+          <span class="theme-toggle-moon" aria-hidden="true">Dark</span>
+        </button>
+      </div>
     </footer>
     <script type="module" src="../../helper-detail.js"></script>
+    <script src="../../script.js"></script>
     <script src="../../connect.js" defer></script>
   </body>
 </html>

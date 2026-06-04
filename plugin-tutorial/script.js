@@ -5,6 +5,7 @@ const quizSelections = JSON.parse(localStorage.getItem("pluginCourseQuizSelectio
 let selectedScenarioId = localStorage.getItem("pluginCourseSelectedScenario") || "";
 let promptCheckCount = Number(localStorage.getItem("pluginCoursePromptCheckCount") || "0");
 let promptMeasured = promptCheckCount > 0;
+const siteRootUrl = new URL("./", document.currentScript?.src || location.href);
 
 const byId = (id) => document.getElementById(id);
 
@@ -12,6 +13,47 @@ function setText(id, value) {
   const node = byId(id);
   if (node) node.textContent = value;
 }
+
+function getSavedChecklist() {
+  try {
+    return JSON.parse(localStorage.getItem("pluginCourseChecklist") || "[]");
+  } catch {
+    return [];
+  }
+}
+
+const courseMapItems = [
+  {
+    id: "router",
+    eyebrow: "Lesson 1",
+    title: "Choose the right help",
+    path: "lessons/choose-right-help/"
+  },
+  {
+    id: "prompts",
+    eyebrow: "Lesson 2",
+    title: "Write the starter prompt",
+    path: "lessons/write-starter-prompt/"
+  },
+  {
+    id: "lab",
+    eyebrow: "Lesson 3",
+    title: "Practice the routing reflex",
+    path: "lessons/practice-routing-reflex/"
+  },
+  {
+    id: "stack",
+    eyebrow: "Lesson 4",
+    title: "Know where work lives",
+    path: "lessons/where-work-lives/"
+  },
+  {
+    id: "setup",
+    eyebrow: "Finish",
+    title: "Setup and trust checks",
+    path: "setup/"
+  }
+];
 
 function setTheme(theme) {
   const nextTheme = theme === "dark" ? "dark" : "light";
@@ -278,7 +320,9 @@ function saveProgress() {
   if (checklistInputs.length) {
     localStorage.setItem("pluginCourseChecklist", JSON.stringify(checklistInputs.map((item) => item.checked)));
   }
+  updateCompletionButtons();
   renderMilestones();
+  renderCourseMap();
 }
 
 function getCorrectQuizCount() {
@@ -293,12 +337,15 @@ function getCorrectQuizCount() {
 }
 
 function getChecklistCount() {
-  return [...document.querySelectorAll(".check-item input")].filter((item) => item.checked).length;
+  const inputs = [...document.querySelectorAll(".check-item input")];
+  if (inputs.length) return inputs.filter((item) => item.checked).length;
+  return getSavedChecklist().filter(Boolean).length;
 }
 
 function getProofHabitCount() {
   const checklist = [...document.querySelectorAll(".check-item input")];
-  const hasDoneSignal = checklist[4]?.checked ? 1 : 0;
+  const savedChecklist = getSavedChecklist();
+  const hasDoneSignal = (checklist.length ? checklist[4]?.checked : savedChecklist[4]) ? 1 : 0;
   const hasScenario = selectedScenarioId ? 1 : 0;
   const hasCompletePrompt = promptCheckCount === 6 ? 1 : 0;
   return hasScenario + hasCompletePrompt + hasDoneSignal;
@@ -372,6 +419,46 @@ function renderMilestones() {
   }).join("");
 }
 
+function renderCourseMap() {
+  const containers = document.querySelectorAll("[data-course-map]");
+  if (!containers.length) return;
+
+  const currentPath = location.pathname.endsWith("/") ? location.pathname : `${location.pathname}/`;
+  const allLessonsComplete = moduleIds.every((id) => completed.has(id));
+  const setupComplete = allLessonsComplete && getChecklistCount() === checklistItems.length;
+
+  const items = courseMapItems.map((item) => {
+    const href = new URL(item.path, siteRootUrl);
+    const isActive = currentPath === href.pathname;
+    const isComplete = item.id === "setup" ? setupComplete : completed.has(item.id);
+    return { ...item, href: href.href, isActive, isComplete };
+  });
+
+  const html = `
+    <div class="course-map-strip-head">
+      <span>Learning path</span>
+      <strong>${moduleIds.filter((id) => completed.has(id)).length}/${moduleIds.length} lessons complete</strong>
+    </div>
+    <ol class="course-map-list">
+      ${items.map((item) => `
+        <li>
+          <a class="course-map-link ${item.isActive ? "active" : ""} ${item.isComplete ? "complete" : ""}" href="${item.href}" ${item.isActive ? 'aria-current="page"' : ""}>
+            <span class="course-map-status">${item.isComplete ? "Done" : item.isActive ? "Now" : "Open"}</span>
+            <span class="course-map-copy">
+              <span>${item.eyebrow}</span>
+              <strong>${item.title}</strong>
+            </span>
+          </a>
+        </li>
+      `).join("")}
+    </ol>
+  `;
+
+  containers.forEach((container) => {
+    container.innerHTML = html;
+  });
+}
+
 function renderScenarios() {
   const grid = byId("scenarioGrid");
   const answer = byId("scenarioAnswer");
@@ -388,10 +475,7 @@ function renderScenarios() {
     </button>
   `).join("");
 
-  grid.addEventListener("click", (event) => {
-    const card = event.target.closest(".scenario-card");
-    if (!card) return;
-    const item = scenarios.find((scenario) => scenario.id === card.dataset.scenario);
+  const selectScenario = (item, card) => {
     selectedScenarioId = item.id;
     localStorage.setItem("pluginCourseSelectedScenario", selectedScenarioId);
     document.querySelectorAll(".scenario-card").forEach((node) => node.classList.toggle("active", node === card));
@@ -406,6 +490,14 @@ function renderScenarios() {
       <button class="btn btn-secondary scenario-copy" type="button" data-copy-prompt="${item.id}">Copy starter prompt</button>
     `;
     saveProgress();
+  };
+
+  grid.addEventListener("click", (event) => {
+    const card = event.target.closest(".scenario-card");
+    if (!card) return;
+    const item = scenarios.find((scenario) => scenario.id === card.dataset.scenario);
+    if (!item) return;
+    selectScenario(item, card);
   });
 
   answer.addEventListener("click", async (event) => {
@@ -416,6 +508,12 @@ function renderScenarios() {
     button.textContent = "Copied";
     setTimeout(() => (button.textContent = "Copy starter prompt"), 1200);
   });
+
+  if (selectedScenarioId) {
+    const savedItem = scenarios.find((scenario) => scenario.id === selectedScenarioId);
+    const savedCard = savedItem ? grid.querySelector(`[data-scenario="${savedItem.id}"]`) : null;
+    if (savedItem && savedCard) selectScenario(savedItem, savedCard);
+  }
 }
 
 function renderPluginDirectory() {
@@ -563,6 +661,7 @@ function renderChecklist() {
 
 function wireCompletion() {
   document.querySelectorAll(".complete-btn").forEach((button) => {
+    button.dataset.defaultLabel = button.textContent;
     button.addEventListener("click", () => {
       if (button.dataset.complete === "all") {
         moduleIds.forEach((section) => completed.add(section));
@@ -571,6 +670,22 @@ function wireCompletion() {
       }
       saveProgress();
     });
+  });
+}
+
+function updateCompletionButtons() {
+  document.querySelectorAll(".complete-btn").forEach((button) => {
+    const isAll = button.dataset.complete === "all";
+    const isComplete = isAll
+      ? moduleIds.every((id) => completed.has(id))
+      : completed.has(button.dataset.complete);
+    button.classList.toggle("is-complete", isComplete);
+    button.setAttribute("aria-pressed", String(isComplete));
+    if (isComplete) {
+      button.textContent = isAll ? "Course complete" : "Lesson complete";
+    } else if (button.dataset.defaultLabel) {
+      button.textContent = button.dataset.defaultLabel;
+    }
   });
 }
 
@@ -704,5 +819,7 @@ wireMeasurementReset();
 wireActiveNav();
 wireMobileMenu();
 wireThemeToggle();
-buildPrompt({ measure: false });
+if (byId("promptForm")) {
+  buildPrompt({ measure: promptCheckCount > 0 });
+}
 saveProgress();
