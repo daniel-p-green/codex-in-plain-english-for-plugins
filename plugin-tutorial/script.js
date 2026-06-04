@@ -349,9 +349,8 @@ function renderScenarios() {
   const grid = document.getElementById("scenarioGrid");
   grid.innerHTML = scenarios.map((item) => `
     <button class="module-card scenario-card" type="button" data-scenario="${item.id}">
-      <span class="module-card-release updated">${item.number}</span>
-      <div class="module-card-meta">
-        <span class="module-card-number">Helper type</span>
+      <div class="scenario-card-head">
+        <span class="module-card-release updated">${item.number}</span>
         <span class="scenario-tag">${item.tag}</span>
       </div>
       <h3>${item.title}</h3>

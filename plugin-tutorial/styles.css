@@ -2996,6 +2996,18 @@ button {
   text-align: left;
 }
 
+.scenario-card-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.scenario-card-head .module-card-release {
+  flex: 0 0 auto;
+}
+
 .scenario-card.active {
   border-color: color-mix(in srgb, var(--blue-200) 65%, var(--border-soft));
   background: color-mix(in srgb, var(--surface-100) 76%, rgba(102, 181, 255, 0.2));
@@ -3014,6 +3026,9 @@ button {
   font-family: var(--font-mono);
   font-size: 0.62rem;
   letter-spacing: 0.03em;
+  line-height: 1.15;
+  max-width: 66%;
+  text-align: left;
 }
 
 .scenario-answer {
