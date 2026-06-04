@@ -8,6 +8,8 @@ This folder is deployed as a static GitHub Pages site by `.github/workflows/depl
 
 Every push or merge to `main` or `master` that changes `plugin-tutorial/**` redeploys the course.
 
+This is a static course site. It does not implement a real Codex app-server login, OAuth callback, or connector-auth probe. The course teaches learners how to verify plugin authentication from inside Codex.
+
 ## Open It Through A Local App Server
 
 Run a local server from this folder:

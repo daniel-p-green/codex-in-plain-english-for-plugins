@@ -1,4 +1,4 @@
-const moduleIds = ["router", "prompts", "lab", "stack"];
+const moduleIds = ["router", "prompts", "lab", "stack", "directory"];
 const completed = new Set(JSON.parse(localStorage.getItem("pluginCourseCompleted") || "[]"));
 const answeredQuiz = new Set();
 let selectedScenarioId = localStorage.getItem("pluginCourseSelectedScenario") || "";
@@ -71,6 +71,122 @@ const scenarios = [
     why: "The artifact matters more than the connector. Build reusable course material and verify it opens.",
     prompt: "Turn this topic into a beginner lesson with exercises, a short deck outline, and a reusable handout.",
     verify: "Look for a document or deck artifact plus a quick readability and opening check."
+  }
+];
+
+const pluginGroups = [
+  {
+    title: "Everyday Context And Relationships",
+    job: "Find the surrounding conversation, prepare meetings, follow up, or use relationship context.",
+    proof: "Source names, timestamps, draft outputs, missing access, and no external send unless approved.",
+    plugins: [
+      ["Slack", "Search channels, threads, files, and people; draft messages or canvases."],
+      ["Gmail", "Find emails, triage inbox context, and draft replies."],
+      ["Google Calendar", "Check schedules, availability, meeting prep, and daily briefs."],
+      ["Google Drive", "Work across Drive, Docs, Sheets, and Slides files."],
+      ["Granola", "Use meeting notes and transcripts as source context."],
+      ["Zoom", "Use post-meeting summaries, recordings, documents, and moments."],
+      ["Happenstance", "Search your professional network and warm intro paths."],
+      ["Sales", "Prepare sales meetings, follow up, review pipeline, and reuse preferences."]
+    ]
+  },
+  {
+    title: "Build, Debug, And Ship Software",
+    job: "Inspect code, implement changes, test apps, deploy projects, or work with developer platforms.",
+    proof: "Changed files, command output, route checks, screenshots, deployment URLs, logs, or blockers.",
+    plugins: [
+      ["GitHub", "Inspect repos, issues, pull requests, CI, and publish changes."],
+      ["Browser", "Use the Codex in-app browser for local routes, file URLs, and localhost checks."],
+      ["Chrome", "Automate authenticated remote pages, Chrome profiles, tabs, cookies, and extensions."],
+      ["Computer Use", "Control desktop apps on macOS when the work is outside the browser or repo."],
+      ["OpenAI Developers", "Build with OpenAI APIs, Agents SDK, ChatGPT Apps, and API keys."],
+      ["ChatGPT Apps", "Build and prepare ChatGPT Apps and submission materials."],
+      ["Build Web Apps", "Build frontend apps, components, browser tests, payments, and web patterns."],
+      ["Build iOS Apps", "Build and debug iOS apps with SwiftUI, simulators, and performance workflows."],
+      ["Build macOS Apps", "Build, run, test, debug, and package macOS apps."],
+      ["Expo", "Build, debug, upgrade, and deploy Expo or React Native apps."],
+      ["Test Android Apps", "Test Android apps with emulator, screenshots, logs, and performance checks."],
+      ["Cloudflare", "Build Workers, Agents SDK projects, MCP servers, and Cloudflare deployments."],
+      ["Vercel", "Build and deploy web apps and agents."],
+      ["Lovable", "Build and inspect Lovable app projects."]
+    ]
+  },
+  {
+    title: "Data, Databases, Finance, And Reports",
+    job: "Answer metric questions, build dashboards, work with spreadsheets, databases, or market analysis.",
+    proof: "Source rows, queries, metric definitions, caveats, chart artifacts, and refresh boundaries.",
+    plugins: [
+      ["Data Analytics", "Analyze usage, metric movement, KPIs, dashboards, reports, and semantic layers."],
+      ["Build Web Data Visualization", "Create charts, maps, dashboards, reports, and data stories."],
+      ["Spreadsheets", "Create, edit, analyze, visualize, and export spreadsheet workbooks."],
+      ["Neon Postgres", "Manage Neon projects, branches, databases, schemas, and SQL queries."],
+      ["Supabase", "Manage Supabase projects, Postgres tables, auth, migrations, and edge functions."],
+      ["Public Equity Investing", "Research public companies, earnings, valuation, catalysts, and memos."],
+      ["Investment Banking", "Support M&A, valuation, diligence, pitch materials, and deal workflows."]
+    ]
+  },
+  {
+    title: "Design, Creative, Media, And Games",
+    job: "Make visual artifacts, prototypes, videos, campaign directions, game experiences, or generated media.",
+    proof: "Reviewable variants, design links, exported files, screenshots, claim notes, and selected direction.",
+    plugins: [
+      ["Product Design", "Turn ideas, screenshots, or URLs into prototypes, audits, and product directions."],
+      ["Figma", "Read, generate, edit, and sync designs, FigJam diagrams, and Figma Slides."],
+      ["Canva", "Create and edit social posts, presentations, and brand assets."],
+      ["adobe-for-creativity", "Use Adobe tools for images, vectors, design, batch edits, and video polish."],
+      ["Adobe Acrobat", "Transform, organize, compress, OCR, redact, split, merge, and convert PDFs."],
+      ["Adobe Express", "Design flyers, invitations, social graphics, and lightweight branded assets."],
+      ["Adobe Photoshop", "Edit images, change backgrounds, remove objects, retouch, and stylize photos."],
+      ["Creative Production", "Explore campaigns, offers, moodboards, product placements, and launch assets."],
+      ["Fal", "Generate and edit images, video, audio, 3D assets, and media jobs."],
+      ["HeyGen", "Create avatar videos, video translations, voices, and personalized presenter content."],
+      ["HyperFrames by HeyGen", "Write HTML and render motion graphics, captions, voiceovers, and website video."],
+      ["Remotion", "Build programmatic videos with React, animation, captions, and audio."],
+      ["Game Studio", "Design, prototype, playtest, and ship browser games with 2D or 3D workflows."]
+    ]
+  },
+  {
+    title: "Documents, Research, Models, And Technical Knowledge",
+    job: "Create polished documents, presentations, research synthesis, model work, or technical artifacts.",
+    proof: "Exported files, source lists, citations, rendered artifacts, compiled output, or reviewed examples.",
+    plugins: [
+      ["Documents", "Create and edit document artifacts, including Word files and Google Docs."],
+      ["Presentations", "Create, edit, render, verify, and export slide decks or PowerPoint files."],
+      ["LaTeX", "Compile LaTeX projects with bundled Tectonic or larger TeX runtimes."],
+      ["Hugging Face", "Inspect models, datasets, Spaces, papers, training jobs, and community evals."],
+      ["Life Science Research", "Route and synthesize life-sciences evidence, datasets, biology, chemistry, and clinical sources."],
+      ["NVIDIA", "Navigate GPU acceleration, CUDA, inference, robotics, Omniverse, and simulation workflows."]
+    ]
+  },
+  {
+    title: "Consumer, Commerce, Travel, And Safety Apps",
+    job: "Research purchases, travel, reservations, rides, food, homes, events, learning, markets, or suspicious links.",
+    proof: "Live result links, prices or ranges, dates, locations, risk notes, and a clear handoff before buying or booking.",
+    plugins: [
+      ["Alpaca", "Ask live market-data questions about stocks, options, crypto, and historical performance."],
+      ["Coursera", "Find relevant courses and video lectures for learning goals."],
+      ["Malwarebytes", "Check suspicious links, domains, emails, phone numbers, and phishing risk."],
+      ["OpenTable", "Find restaurant reservations."],
+      ["StubHub", "Search live events and ticket listings."],
+      ["Target", "Browse products, plan baskets, and prepare shopping lists or checkout handoffs."],
+      ["Tripadvisor", "Research hotels, neighborhoods, reviews, amenities, photos, and booking options."],
+      ["Uber", "Estimate real-time US ride fares and ride options."],
+      ["Uber Eats", "Find deliverable restaurants and dishes."],
+      ["Zillow", "Search homes or rentals and compare real-estate options."]
+    ]
+  },
+  {
+    title: "Agent Workflows, Security, Evaluation, And Local Power Tools",
+    job: "Plan agentic work, evaluate plugins, scan security risk, manage goals, or use local helper workflows.",
+    proof: "Plans, findings, reports, receipts, verified scans, saved knowledge, or explicit stop conditions.",
+    plugins: [
+      ["Codex Security", "Run security scans, threat models, attack-path analysis, and finding validation."],
+      ["Plugin Eval", "Evaluate Codex skills and plugins with guided reports and benchmarks."],
+      ["GoalBuddy", "Turn broad work into goal runs with boards, pressure, receipts, and verification."],
+      ["compound-knowledge", "Brainstorm, plan, review, execute, and save knowledge compounds."],
+      ["Superpowers", "Use structured software-development methods for planning, TDD, debugging, and collaboration."],
+      ["Techwerker", "Use local Tech Week planning helpers, RSVP queues, and event state."]
+    ]
   }
 ];
 
@@ -274,6 +390,31 @@ function renderScenarios() {
   });
 }
 
+function renderPluginDirectory() {
+  const directory = document.getElementById("pluginDirectory");
+  if (!directory) return;
+  const pluginCount = pluginGroups.reduce((sum, group) => sum + group.plugins.length, 0);
+  document.getElementById("pluginCount").textContent = String(pluginCount);
+  directory.innerHTML = pluginGroups.map((group) => `
+    <article class="plugin-directory-group">
+      <div class="plugin-directory-group-head">
+        <h3>${group.title}</h3>
+        <span>${group.plugins.length} plugins</span>
+      </div>
+      <p>${group.job}</p>
+      <div class="plugin-proof"><strong>Proof:</strong> ${group.proof}</div>
+      <div class="plugin-list">
+        ${group.plugins.map(([name, description]) => `
+          <div class="plugin-list-item">
+            <strong>${name}</strong>
+            <span>${description}</span>
+          </div>
+        `).join("")}
+      </div>
+    </article>
+  `).join("");
+}
+
 function buildPrompt({ measure = true } = {}) {
   const form = document.getElementById("promptForm");
   const values = Object.fromEntries(new FormData(form).entries());
@@ -447,6 +588,7 @@ if (location.protocol === "file:") {
 }
 
 renderScenarios();
+renderPluginDirectory();
 renderQuiz();
 renderChecklist();
 wireCompletion();

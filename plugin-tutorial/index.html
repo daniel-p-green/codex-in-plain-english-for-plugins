@@ -33,6 +33,7 @@
           <nav class="top-nav-links" aria-label="Primary">
             <a class="top-nav-link active" href="#overview">Overview</a>
             <a class="top-nav-link" href="#router">Modules</a>
+            <a class="top-nav-link" href="#plugin-directory">Directory</a>
             <a class="top-nav-link" href="#lab">Practice</a>
             <a class="top-nav-link" href="#checklist">Progress</a>
           </nav>
@@ -82,6 +83,11 @@
                 <li>
                   <a class="left-sidebar-link" href="#glossary" aria-label="Plain-English Glossary">
                     <span class="left-sidebar-label">Plugin Glossary</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="left-sidebar-link" href="#plugin-directory" aria-label="Plugin Directory">
+                    <span class="left-sidebar-label">Plugin Directory</span>
                   </a>
                 </li>
               </ul>
@@ -225,6 +231,40 @@
               </div>
             </section>
 
+            <section class="concept-layer" aria-labelledby="concept-layer-title">
+              <div class="concept-layer-header">
+                <p class="section-kicker">Mental Model</p>
+                <h2 id="concept-layer-title">Plugins are bundles, not just buttons</h2>
+                <p>A plugin can contain skills, tools, connectors, apps, workflows, or instructions. That is why the same thing may feel like a capability, a login, a menu item, and a workflow all at once.</p>
+              </div>
+              <div class="concept-grid">
+                <article>
+                  <h3>Plugin</h3>
+                  <p>The package. It bundles one or more capabilities and tells Codex when they are useful.</p>
+                  <span>Example: GitHub, Figma, Data Analytics, Creative Production.</span>
+                </article>
+                <article>
+                  <h3>Skill</h3>
+                  <p>The playbook. It gives Codex a specific workflow, standards, or steps to follow.</p>
+                  <span>Example: use a frontend testing skill, a security scan skill, or a Figma implementation skill.</span>
+                </article>
+                <article>
+                  <h3>Connector or app</h3>
+                  <p>The live account bridge. It may require auth and can reach real outside context.</p>
+                  <span>Example: Slack, Gmail, Drive, Calendar, Zoom, Figma, GitHub.</span>
+                </article>
+                <article>
+                  <h3>Tool</h3>
+                  <p>The callable action. Codex uses it to inspect, search, click, query, render, or deploy.</p>
+                  <span>Example: browser navigation, repo issue lookup, database query, or artifact rendering.</span>
+                </article>
+              </div>
+              <div class="auth-truth-note">
+                <strong>Login truth:</strong>
+                <span>This course is hosted as a static GitHub Pages site. It teaches how to verify plugin auth inside Codex, but it does not implement a real Codex app-server login or OAuth flow.</span>
+              </div>
+            </section>
+
             <section class="landing-section" aria-labelledby="start-title">
               <h2 class="landing-section-title" id="start-title">Get started</h2>
               <div class="landing-starter-grid" data-testid="get-started-grid">
@@ -237,6 +277,11 @@
                   <p class="starter-card-kicker">Expanded Codex 2026</p>
                   <h3>Codex as a connected work surface</h3>
                   <p>See how Slack, Drive, Granola, GitHub, Figma, data, and creative tools fit together.</p>
+                </a>
+                <a class="starter-card starter-card-secondary" href="#plugin-directory">
+                  <p class="starter-card-kicker">Full Directory</p>
+                  <h3>Every enabled plugin by job</h3>
+                  <p>Use this when you know the plugin exists but cannot remember what it is for.</p>
                 </a>
               </div>
             </section>
@@ -400,6 +445,28 @@
               </div>
             </section>
 
+            <section class="landing-section plugin-directory-section" id="plugin-directory" aria-labelledby="plugin-directory-title">
+              <div class="directory-header">
+                <div>
+                  <p class="section-kicker">Comprehensive Map</p>
+                  <h2 class="landing-section-title" id="plugin-directory-title">Plugin directory by job</h2>
+                  <p>Use this as the complete routing layer. The goal is not to memorize all of these. The goal is to recognize the job, choose a lane, and ask for proof.</p>
+                </div>
+                <div class="directory-count" aria-label="Plugin coverage">
+                  <strong id="pluginCount">0</strong>
+                  <span>plugins mapped</span>
+                </div>
+              </div>
+              <div class="directory-principle">
+                <strong>Plain-English rule:</strong>
+                <span>If the work lives in an account, app, design, repo, database, document, meeting, market, model, or media tool, there is probably a plugin lane. If the work is only local text or code, normal Codex work may be enough.</span>
+              </div>
+              <div class="plugin-directory-grid" id="pluginDirectory"></div>
+              <div class="section-mark-complete">
+                <button class="btn btn-secondary complete-btn" type="button" data-complete="directory">Mark directory reviewed</button>
+              </div>
+            </section>
+
             <section class="landing-section glossary-page plugin-glossary" id="glossary" aria-labelledby="glossary-title">
               <header class="glossary-header">
                 <h1 id="glossary-title">Plain-English plugin glossary</h1>
@@ -408,8 +475,13 @@
               <div class="glossary-grid">
                 <article class="glossary-card">
                   <h2>Plugin</h2>
-                  <p>A bundled capability that gives Codex a workflow, tool, connector, skill, or app surface.</p>
+                  <p>A bundle that may include skills, tools, connectors, app surfaces, workflow instructions, or all of those together.</p>
                   <p class="glossary-example">Example: Product Design helps turn a screenshot, URL, or brief into a reviewable prototype.</p>
+                </article>
+                <article class="glossary-card">
+                  <h2>Skill</h2>
+                  <p>A specific playbook inside Codex. Skills tell Codex how to do a kind of work well.</p>
+                  <p class="glossary-example">Example: a Figma skill can guide design work; a security skill can guide scanning and validation.</p>
                 </article>
                 <article class="glossary-card">
                   <h2>Connector</h2>
@@ -429,7 +501,7 @@
               <div class="dashboard-stats">
                 <article class="stat-card">
                   <p class="stat-card-icon">Complete</p>
-                  <p class="stat-card-value" id="completeCount">0/4</p>
+                  <p class="stat-card-value" id="completeCount">0/5</p>
                   <p class="stat-card-label">Modules marked complete</p>
                 </article>
                 <article class="stat-card">
