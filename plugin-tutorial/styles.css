@@ -539,6 +539,14 @@ button {
 .landing-hero {
   text-align: center;
   margin-bottom: var(--space-8);
+  border: 1px solid color-mix(in srgb, var(--blue-200) 20%, var(--border-soft));
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(circle at 50% 0%, color-mix(in srgb, var(--blue-200) 24%, transparent), transparent 36%),
+    linear-gradient(135deg, color-mix(in srgb, var(--blue-200) 15%, transparent), color-mix(in srgb, var(--green-300) 8%, transparent) 56%, transparent),
+    var(--surface-25);
+  padding: var(--space-8) var(--space-6);
+  overflow: hidden;
 }
 
 .landing-hero h1 {
@@ -550,6 +558,20 @@ button {
   white-space: nowrap;
   text-wrap: balance;
   margin: 0 auto;
+}
+
+.hero-dex-badge {
+  width: 78px;
+  height: 78px;
+  display: grid;
+  place-items: center;
+  margin: 0 auto var(--space-4);
+  border: 1px solid color-mix(in srgb, var(--blue-200) 18%, var(--border-soft));
+  border-radius: var(--radius-md);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.08), transparent 54%),
+    color-mix(in srgb, var(--surface-150) 72%, rgba(102, 181, 255, 0.16));
+  font-size: 2.05rem;
 }
 
 .hero-title-main {
@@ -567,10 +589,10 @@ button {
 .landing-hero p {
   margin-top: var(--space-4);
   color: var(--text-700);
-  font-size: 1.7rem;
-  line-height: 1.15;
+  font-size: 1.42rem;
+  line-height: 1.2;
   letter-spacing: 0;
-  max-width: 54ch;
+  max-width: 42ch;
   margin-left: auto;
   margin-right: auto;
   text-wrap: balance;
@@ -586,6 +608,27 @@ button {
   margin-left: auto;
   margin-right: auto;
   text-wrap: balance;
+}
+
+.hero-route {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-5);
+}
+
+.hero-route span {
+  border: 1px solid color-mix(in srgb, var(--blue-200) 24%, var(--border-soft));
+  border-radius: var(--radius-pill);
+  background: color-mix(in srgb, var(--surface-100) 70%, rgba(102, 181, 255, 0.12));
+  color: var(--text-800);
+  padding: 7px 11px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  line-height: 1.1;
+  letter-spacing: 0.04em;
 }
 
 .course-clarity {
@@ -2452,6 +2495,7 @@ button {
   .landing-hero {
     text-align: left;
     margin-bottom: var(--space-6);
+    padding: var(--space-5);
   }
 
   .landing-hero h1 {
@@ -2463,6 +2507,14 @@ button {
     letter-spacing: 0;
     margin-left: 0;
     margin-right: 0;
+  }
+
+  .hero-dex-badge {
+    width: 58px;
+    height: 58px;
+    margin-left: 0;
+    margin-bottom: var(--space-3);
+    font-size: 1.55rem;
   }
 
   .hero-title-suffix {
@@ -2478,6 +2530,16 @@ button {
     max-width: 31ch;
     margin-left: 0;
     margin-right: 0;
+  }
+
+  .hero-route {
+    justify-content: flex-start;
+    margin-top: var(--space-4);
+  }
+
+  .hero-route span {
+    font-size: 0.66rem;
+    padding: 6px 9px;
   }
 
   .landing-hero .landing-hero-note {
