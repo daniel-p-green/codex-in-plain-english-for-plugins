@@ -1,5 +1,13 @@
 import { findHelperBySlug } from "./course-data.mjs";
 
+function escapeHtml(value) {
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
 const pathParts = window.location.pathname.split("/").filter(Boolean);
 let slug = pathParts[pathParts.length - 1] || "";
 if (slug === "index.html") {
@@ -18,6 +26,10 @@ if (!helper) {
     </section>
   `;
 } else {
+  const safe = Object.fromEntries(
+    Object.entries(helper).map(([key, value]) => [key, escapeHtml(value)])
+  );
+
   document.title = `${helper.name} | Codex in Plain English for Plugins`;
   document.querySelector("meta[name='description']")?.setAttribute(
     "content",
@@ -30,29 +42,54 @@ if (!helper) {
       <span>/</span>
       <a href="../">Helper map</a>
       <span>/</span>
-      <strong>${helper.name}</strong>
+      <strong>${safe.name}</strong>
     </nav>
 
     <section class="helper-detail-hero">
-      <p class="section-kicker">${helper.plainTitle}</p>
-      <h1>${helper.name}</h1>
-      <p>${helper.description}</p>
+      <p class="section-kicker">${safe.plainTitle}</p>
+      <h1>${safe.name}</h1>
+      <p>${safe.description}</p>
     </section>
 
-    <section class="helper-detail-grid" aria-label="${helper.name} guide">
+    <section class="helper-detail-grid" aria-label="${safe.name} guide">
       <article class="helper-detail-panel helper-detail-panel-large">
         <span>Use it when</span>
-        <h2>${helper.job}</h2>
+        <h2>${safe.job}</h2>
         <p>Say the task in normal language first. Codex can decide whether this helper is the right doorway.</p>
       </article>
       <article class="helper-detail-panel">
         <span>First tiny test</span>
-        <p>${helper.tinyTest}</p>
+        <p>${safe.tinyTest}</p>
       </article>
       <article class="helper-detail-panel">
         <span>Watch out for</span>
-        <p>${helper.watchOut}</p>
+        <p>${safe.watchOut}</p>
       </article>
+    </section>
+
+    <section class="helper-tutorial-block" aria-labelledby="mini-lesson-title">
+      <div class="helper-tutorial-copy">
+        <p class="section-kicker">Mini lesson</p>
+        <h2 id="mini-lesson-title">How to start without knowing the technical name</h2>
+        <p>
+          Treat ${safe.name} as one option Codex may use, not a magic word you have to memorize.
+          Start with the work, the boundary, and the proof you need before you trust the result.
+        </p>
+      </div>
+      <ol class="helper-lesson-steps">
+        <li>
+          <strong>Say the job</strong>
+          <span>Name the outcome in normal language, like follow up, compare options, fix this page, or draft the artifact.</span>
+        </li>
+        <li>
+          <strong>Ask for one safe check</strong>
+          <span>${safe.tinyTest}</span>
+        </li>
+        <li>
+          <strong>Review the proof</strong>
+          <span>${safe.proof}</span>
+        </li>
+      </ol>
     </section>
 
     <section class="helper-prompt-block" aria-labelledby="starter-prompt-title">
@@ -60,8 +97,29 @@ if (!helper) {
         <p class="section-kicker">Starter prompt</p>
         <h2 id="starter-prompt-title">Try this first</h2>
       </div>
-      <pre>${helper.firstAsk}</pre>
+      <pre>${safe.firstAsk}</pre>
       <button class="btn btn-secondary" type="button" id="copyHelperPrompt">Copy starter prompt</button>
+    </section>
+
+    <section class="helper-practice-block" aria-labelledby="practice-title">
+      <div>
+        <p class="section-kicker">Practice run</p>
+        <h2 id="practice-title">Before you use it on real work</h2>
+      </div>
+      <div class="helper-practice-grid">
+        <article>
+          <span>Use a harmless task</span>
+          <p>${safe.tinyTest}</p>
+        </article>
+        <article>
+          <span>Keep the boundary clear</span>
+          <p>Ask Codex to draft, inspect, or summarize first. Do not let it send, buy, book, publish, or change private work until you say yes.</p>
+        </article>
+        <article>
+          <span>Ask for the receipt</span>
+          <p>${safe.proof}</p>
+        </article>
+      </div>
     </section>
 
     <section class="proof-table-wrapper helper-proof-block" aria-labelledby="proof-title">
@@ -92,7 +150,7 @@ if (!helper) {
           </tr>
         </tbody>
       </table>
-      <p class="helper-proof-note"><strong>Proof habit:</strong> ${helper.proof}</p>
+      <p class="helper-proof-note"><strong>Proof habit:</strong> ${safe.proof}</p>
     </section>
 
     <section class="helper-next-links" aria-label="Next steps">

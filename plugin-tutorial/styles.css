@@ -3706,6 +3706,98 @@ button {
   line-height: 1.48;
 }
 
+.helper-tutorial-block,
+.helper-practice-block {
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  background: var(--surface-25);
+  padding: var(--space-5);
+  margin-bottom: var(--space-8);
+}
+
+.helper-tutorial-block {
+  display: grid;
+  grid-template-columns: minmax(240px, 0.82fr) minmax(0, 1.18fr);
+  gap: var(--space-5);
+  align-items: start;
+}
+
+.helper-tutorial-copy h2,
+.helper-practice-block h2 {
+  color: var(--text-900);
+  font-size: 1.35rem;
+  line-height: 1.2;
+  letter-spacing: 0;
+  margin-bottom: var(--space-3);
+}
+
+.helper-tutorial-copy p:not(.section-kicker) {
+  color: var(--text-700);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.helper-lesson-steps {
+  display: grid;
+  gap: var(--space-3);
+  counter-reset: helper-step;
+}
+
+.helper-lesson-steps li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--space-2) var(--space-3);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-sm);
+  background: var(--surface-75);
+  padding: var(--space-4);
+}
+
+.helper-lesson-steps li::before {
+  counter-increment: helper-step;
+  content: counter(helper-step);
+  grid-row: span 2;
+  width: 28px;
+  height: 28px;
+  border: 1px solid color-mix(in srgb, var(--green-300) 42%, var(--border-soft));
+  border-radius: var(--radius-pill);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--green-300);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+}
+
+.helper-lesson-steps strong,
+.helper-practice-grid span {
+  color: var(--text-900);
+  font-size: 0.96rem;
+  line-height: 1.25;
+}
+
+.helper-lesson-steps span,
+.helper-practice-grid p {
+  color: var(--text-700);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.helper-practice-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-3);
+}
+
+.helper-practice-grid article {
+  display: grid;
+  gap: var(--space-2);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-sm);
+  background: var(--surface-50);
+  padding: var(--space-4);
+}
+
 .helper-prompt-block {
   border: 1px solid color-mix(in srgb, var(--blue-200) 35%, var(--border-soft));
   border-radius: var(--radius-md);
@@ -4120,6 +4212,8 @@ button {
   .helper-teaser-grid,
   .helper-directory-group,
   .helper-detail-grid,
+  .helper-tutorial-block,
+  .helper-practice-grid,
   .connect-truth-grid,
   .connect-login-shell {
     grid-template-columns: 1fr;
@@ -4151,6 +4245,7 @@ button {
   .helper-teaser-grid,
   .helper-card-grid,
   .helper-next-links,
+  .helper-lesson-steps li,
   .checklist,
   .server-notice {
     grid-template-columns: 1fr;
@@ -4171,6 +4266,16 @@ button {
   .helper-directory-hero p,
   .helper-detail-hero p {
     font-size: 1rem;
+  }
+
+  .helper-tutorial-block,
+  .helper-practice-block,
+  .helper-prompt-block {
+    padding: var(--space-4);
+  }
+
+  .helper-lesson-steps li::before {
+    grid-row: auto;
   }
 
   .helper-search-row {

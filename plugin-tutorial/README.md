@@ -8,7 +8,7 @@ This folder is deployed as a static GitHub Pages site by `.github/workflows/depl
 
 Every push or merge to `main` or `master` that changes `plugin-tutorial/**` redeploys the course.
 
-The workflow regenerates one dedicated page per helper before publishing.
+The workflow regenerates one dedicated mini-tutorial page per helper before publishing.
 
 This is a static course site. It can offer a ChatGPT login option only when a local Codex sign-in helper is running. The course itself does not store credentials or helper tokens.
 
@@ -44,7 +44,7 @@ Then press `Sign in` in the site header.
 - Module 2: Six-field starter prompt builder
 - Module 3: Routing practice quiz
 - Module 4: Where the work lives
-- Helper map: Searchable directory plus one page per helper
+- Helper map: Searchable directory plus one mini-tutorial page per helper
 - Header login: ChatGPT login option for local Codex harnesses without API keys
 - Finish: Setup and verification checklist
 
