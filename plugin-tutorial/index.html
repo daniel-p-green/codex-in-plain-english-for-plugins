@@ -1,0 +1,498 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Codex in Plain English for Plugins: a course for choosing, prompting, and verifying Codex plugins."
+    />
+    <title>Codex in Plain English for Plugins</title>
+    <link rel="icon" href="./favicon-trex.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+    <div class="app-shell">
+      <header class="top-nav">
+        <div class="top-nav-inner">
+          <button type="button" class="top-nav-menu" aria-label="Open navigation menu">
+            <span aria-hidden="true">☰</span>
+          </button>
+
+          <a href="#overview" class="top-nav-brand" aria-label="Codex in Plain English for Plugins">
+            <span class="top-nav-brand-dex" aria-hidden="true">🦖</span>
+            <span class="top-nav-brand-text top-nav-brand-text-full" aria-hidden="true">
+              Codex in Plain English
+            </span>
+            <span class="top-nav-brand-text top-nav-brand-text-compact" aria-hidden="true">
+              Plugins
+            </span>
+          </a>
+
+          <nav class="top-nav-links" aria-label="Primary">
+            <a class="top-nav-link active" href="#overview">Overview</a>
+            <a class="top-nav-link" href="#router">Modules</a>
+            <a class="top-nav-link" href="#lab">Practice</a>
+            <a class="top-nav-link" href="#checklist">Progress</a>
+          </nav>
+
+          <div class="top-nav-actions">
+            <div class="top-nav-progress" aria-label="Progress highlights">
+              <span class="top-nav-chip top-nav-chip-xp">
+                <span class="top-nav-chip-value" id="xpValue">0</span>
+                <span class="top-nav-chip-label">XP</span>
+              </span>
+              <span class="top-nav-chip top-nav-chip-level">
+                <span class="top-nav-chip-value" id="levelValue">Lv.1</span>
+                <span class="top-nav-chip-label">Level</span>
+              </span>
+              <span class="top-nav-chip top-nav-chip-streak">
+                <span class="top-nav-chip-value">🦖</span>
+                <span class="top-nav-chip-label">Course</span>
+              </span>
+            </div>
+            <a href="#router" class="top-nav-cta top-nav-continue" aria-label="Continue Codex in Plain English for Plugins">
+              <span class="top-nav-cta-label top-nav-cta-label-full">Continue Course</span>
+              <span class="top-nav-cta-label top-nav-cta-label-compact">Continue</span>
+              <span class="top-nav-cta-meta" id="progressText">0% complete</span>
+            </a>
+          </div>
+        </div>
+      </header>
+
+      <div class="shell-layout">
+        <aside class="left-sidebar" aria-label="Course sections">
+          <div class="left-sidebar-search" aria-label="Course map overview">
+            <span aria-hidden="true">☰</span>
+            <span>Course map</span>
+          </div>
+
+          <p class="left-sidebar-breadcrumb">Course › For Plugins</p>
+
+          <nav class="left-sidebar-nav" aria-label="Course sections">
+            <section class="left-sidebar-group">
+              <h2>Start Here</h2>
+              <ul>
+                <li>
+                  <a class="left-sidebar-link active" href="#overview" aria-label="Course Overview">
+                    <span class="left-sidebar-label">Course Overview</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="left-sidebar-link" href="#glossary" aria-label="Plain-English Glossary">
+                    <span class="left-sidebar-label">Plugin Glossary</span>
+                  </a>
+                </li>
+              </ul>
+            </section>
+
+            <section class="left-sidebar-group">
+              <h2>Core Course</h2>
+              <ul>
+                <li>
+                  <a class="left-sidebar-link" href="#router" aria-label="Module 1: Choose the Right Plugin">
+                    <span class="left-sidebar-label left-sidebar-module-label">
+                      <span class="left-sidebar-module-number">Module 1</span>
+                      <span class="left-sidebar-module-title">Choose the Right Plugin</span>
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a class="left-sidebar-link" href="#prompts" aria-label="Module 2: Write the Starter Prompt">
+                    <span class="left-sidebar-label left-sidebar-module-label">
+                      <span class="left-sidebar-module-number">Module 2</span>
+                      <span class="left-sidebar-module-title">Write the Starter Prompt</span>
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a class="left-sidebar-link" href="#lab" aria-label="Module 3: Practice the Routing Reflex">
+                    <span class="left-sidebar-label left-sidebar-module-label">
+                      <span class="left-sidebar-module-number">Module 3</span>
+                      <span class="left-sidebar-module-title">Practice the Routing Reflex</span>
+                    </span>
+                  </a>
+                </li>
+              </ul>
+            </section>
+
+            <section class="left-sidebar-group">
+              <h2>Expanded Codex 2026</h2>
+              <ul>
+                <li>
+                  <a class="left-sidebar-link" href="#stack" aria-label="Module 4: Know the Plugin Stack">
+                    <span class="left-sidebar-label left-sidebar-module-label">
+                      <span class="left-sidebar-module-number">Module 4</span>
+                      <span class="left-sidebar-module-title">Know the Plugin Stack</span>
+                    </span>
+                  </a>
+                </li>
+              </ul>
+            </section>
+
+            <section class="left-sidebar-group">
+              <h2>Finish</h2>
+              <ul>
+                <li>
+                  <a class="left-sidebar-link" href="#checklist" aria-label="Progress Checklist">
+                    <span class="left-sidebar-label">Progress</span>
+                    <span class="left-sidebar-meta">
+                      <span class="left-sidebar-status" id="sidebarStatus">Start</span>
+                    </span>
+                  </a>
+                </li>
+              </ul>
+            </section>
+          </nav>
+        </aside>
+
+        <main id="main" class="shell-main">
+          <div class="page-container landing-page plugin-course-page">
+            <section class="landing-hero" id="overview">
+              <div class="hero-dex" aria-hidden="true">🦖</div>
+              <h1>
+                <span class="hero-title-main">Codex in Plain English</span>
+                <span class="hero-title-suffix">for Plugins</span>
+              </h1>
+              <p>Learn who to call, what to ask, when to use each plugin, and how to prove it worked.</p>
+              <p class="landing-hero-note">A practical course for connected Codex work.</p>
+            </section>
+
+            <section class="server-notice" id="serverNotice" hidden>
+              <div>
+                <h2>Open this through the local app server</h2>
+                <p>This course works best at <code>http://localhost:8765/</code>. File URLs can make browser-state and login-style flows feel broken.</p>
+              </div>
+              <code>cd plugin-tutorial && python3 -m http.server 8765</code>
+            </section>
+
+            <section class="course-clarity" aria-labelledby="course-clarity-title">
+              <h2 id="course-clarity-title">How this course works</h2>
+              <ol>
+                <li>
+                  <strong>Keep the plain-English loop</strong>
+                  <span>Ask for the outcome, let Codex work, inspect the result, revise, then verify.</span>
+                </li>
+                <li>
+                  <strong>Choose by job, not brand name</strong>
+                  <span>Start with the kind of work: meeting, repo, design, data, artifact, or creative output.</span>
+                </li>
+                <li>
+                  <strong>Finish with proof</strong>
+                  <span>A plugin is ready when it can show sources, drafts, files, screenshots, test output, or a clear blocker.</span>
+                </li>
+              </ol>
+              <p class="course-clarity-glossary-link">
+                Already know the main course? Jump to <a href="#router">Module 1</a>.
+              </p>
+            </section>
+
+            <section class="measurement-panel" aria-labelledby="measurement-title">
+              <div class="measurement-header">
+                <div>
+                  <p class="section-kicker">Milestones</p>
+                  <h2 id="measurement-title">How improvement is measured</h2>
+                  <p>Targets are tied to the job: route the work, write a bounded prompt, verify setup, ask for proof, and finish the course.</p>
+                </div>
+                <div class="measurement-score" aria-label="Overall milestone score">
+                  <strong id="milestoneScore">0%</strong>
+                  <span>readiness</span>
+                </div>
+              </div>
+              <div class="measurement-actions">
+                <button class="btn btn-secondary" id="resetMeasurements" type="button">Reset measurements</button>
+              </div>
+              <div class="milestone-grid" id="milestoneGrid"></div>
+            </section>
+
+            <section class="module-orientation plugin-readiness" aria-label="Plugin readiness model">
+              <div class="module-orientation-item">
+                <h2>Installed</h2>
+                <p>The plugin exists in Codex. This is only the starting point.</p>
+              </div>
+              <div class="module-orientation-item">
+                <h2>Authenticated</h2>
+                <p>Codex can reach the account or app without a fresh login surprise.</p>
+              </div>
+              <div class="module-orientation-item">
+                <h2>Callable</h2>
+                <p>A harmless smoke test returns the right kind of result.</p>
+              </div>
+              <div class="module-orientation-item">
+                <h2>Bounded</h2>
+                <p>You know whether it can draft, edit, publish, send, or only read.</p>
+              </div>
+            </section>
+
+            <section class="landing-section" aria-labelledby="start-title">
+              <h2 class="landing-section-title" id="start-title">Get started</h2>
+              <div class="landing-starter-grid" data-testid="get-started-grid">
+                <a class="starter-card starter-card-primary" href="#router">
+                  <p class="starter-card-kicker">Core Course</p>
+                  <h3>From plugin names to job routing</h3>
+                  <p>Start here when the plugin list feels like a menu with too many good options.</p>
+                </a>
+                <a class="starter-card starter-card-secondary" href="#stack">
+                  <p class="starter-card-kicker">Expanded Codex 2026</p>
+                  <h3>Codex as a connected work surface</h3>
+                  <p>See how Slack, Drive, Granola, GitHub, Figma, data, and creative tools fit together.</p>
+                </a>
+              </div>
+            </section>
+
+            <section class="landing-section" id="router" aria-labelledby="router-title">
+              <h2 class="landing-section-title" id="router-title">Module 1: Choose the right plugin</h2>
+              <div class="module-header plugin-module-header">
+                <div class="module-header-meta">
+                  <span class="badge">10 min</span>
+                  <span class="badge">Routing</span>
+                  <span class="badge">Plain-English first</span>
+                </div>
+                <p>Pick the work you are trying to do. The answer should name the plugin lane, why it fits, the first prompt, and the proof to ask for.</p>
+              </div>
+
+              <div class="decision-tree" aria-label="Plugin decision tree">
+                <h3>Quick decision tree</h3>
+                <ol>
+                  <li><strong>Is the work only in local files?</strong><span>Use normal Codex file/repo work. No plugin needed yet.</span></li>
+                  <li><strong>Is the work in a live account or meeting?</strong><span>Use the connector lane, then ask for sources checked.</span></li>
+                  <li><strong>Is the work visual or app-like?</strong><span>Use Browser, Product Design, Figma, Canva, or creative tools.</span></li>
+                  <li><strong>Could this send, publish, or expose private data?</strong><span>Ask Codex to draft only and stop before external action.</span></li>
+                </ol>
+              </div>
+
+              <div class="module-grid scenario-grid" id="scenarioGrid"></div>
+              <div class="source-panel scenario-answer" id="scenarioAnswer">
+                <h3>Choose a scenario</h3>
+                <p>Click a card above to see the plugin lane, starter prompt, and verification habit.</p>
+              </div>
+              <div class="section-mark-complete">
+                <button class="btn btn-secondary complete-btn" type="button" data-complete="router">Mark Module 1 complete</button>
+              </div>
+            </section>
+
+            <section class="landing-section" id="prompts" aria-labelledby="prompts-title">
+              <h2 class="landing-section-title" id="prompts-title">Module 2: Write the starter prompt</h2>
+              <div class="module-orientation">
+                <div class="module-orientation-item">
+                  <h2>Plain-English rule</h2>
+                  <p>Tell Codex the outcome and the boundary. Do not lead with a tool name unless the tool matters.</p>
+                </div>
+                <div class="module-orientation-item">
+                  <h2>Verification rule</h2>
+                  <p>Every plugin prompt should say what proof you expect before Codex calls the work done.</p>
+                </div>
+              </div>
+
+              <div class="prompt-rubric" aria-label="Prompt quality rubric">
+                <h3>Strong plugin prompts include</h3>
+                <ul>
+                  <li>Goal</li>
+                  <li>Context source</li>
+                  <li>Boundary</li>
+                  <li>Deliverable</li>
+                  <li>Proof</li>
+                  <li>Stop condition</li>
+                </ul>
+              </div>
+
+              <form class="prompt-builder" id="promptForm">
+                <label>Goal<textarea name="goal">Help me prepare for tomorrow's workshop follow-up.</textarea></label>
+                <label>Context<textarea name="context">Use recent Slack, Gmail, Calendar, Granola, and Drive context if available.</textarea></label>
+                <label>Boundaries<textarea name="boundaries">Do not send messages or expose private attendee data. Draft only.</textarea></label>
+                <label>Deliverable<textarea name="deliverable">A short follow-up plan, draft email, and source checklist.</textarea></label>
+                <label>Done when<textarea name="done">I can see the draft, the sources checked, and any missing access called out.</textarea></label>
+                <label>Stop and ask if<textarea name="stop">You need to send anything externally or access a private connector I have not named.</textarea></label>
+                <button class="btn btn-primary" type="submit">Build starter prompt</button>
+              </form>
+
+              <div class="source-panel generated">
+                <div class="generated-head">
+                  <h3>Starter prompt</h3>
+                  <button class="btn btn-secondary" id="copyPrompt" type="button">Copy</button>
+                </div>
+                <pre id="promptOutput"></pre>
+              </div>
+              <div class="prompt-feedback" id="promptFeedback" aria-live="polite"></div>
+              <div class="section-mark-complete">
+                <button class="btn btn-secondary complete-btn" type="button" data-complete="prompts">Mark Module 2 complete</button>
+              </div>
+            </section>
+
+            <section class="landing-section" id="lab" aria-labelledby="lab-title">
+              <h2 class="landing-section-title" id="lab-title">Module 3: Practice the routing reflex</h2>
+              <div class="quiz-section">
+                <div class="quiz-section-header">
+                  <h2>Plugin routing quiz</h2>
+                  <p>Choose the best lane. The goal is not memorizing every plugin. The goal is recognizing the kind of work.</p>
+                </div>
+                <div class="quiz" id="quiz"></div>
+                <div class="quiz-result" id="score">Answer the scenarios to get your score.</div>
+              </div>
+              <div class="section-mark-complete">
+                <button class="btn btn-secondary complete-btn" type="button" data-complete="lab">Mark Module 3 complete</button>
+              </div>
+            </section>
+
+            <section class="landing-section" id="stack" aria-labelledby="stack-title">
+              <h2 class="landing-section-title" id="stack-title">Module 4: Know the plugin stack</h2>
+              <div class="landing-create-grid plugin-stack-grid">
+                <article class="create-card">
+                  <h3>Daily context</h3>
+                  <p>Slack, Gmail, Calendar, Drive, Granola, and Zoom help Codex find the surrounding conversation before drafting or summarizing.</p>
+                  <span class="create-card-cta">Use for meetings, events, follow-up →</span>
+                </article>
+                <article class="create-card">
+                  <h3>Build and verify</h3>
+                  <p>GitHub, Browser, Computer Use, and OpenAI Developers help Codex inspect code, test routes, and prove changes.</p>
+                  <span class="create-card-cta">Use for repo and app work →</span>
+                </article>
+                <article class="create-card">
+                  <h3>Artifacts</h3>
+                  <p>Documents, Spreadsheets, Presentations, Data Analytics, and Product Design turn work into reviewable outputs.</p>
+                  <span class="create-card-cta">Use for docs, dashboards, prototypes →</span>
+                </article>
+                <article class="create-card">
+                  <h3>Creative output</h3>
+                  <p>Creative Production, Canva, Figma, Fal, Adobe, Remotion, HyperFrames, and HeyGen help make public-facing assets.</p>
+                  <span class="create-card-cta">Use for image, video, and social work →</span>
+                </article>
+              </div>
+
+              <div class="proof-table-wrapper">
+                <h3>What proof should Codex show?</h3>
+                <table class="content-table">
+                  <thead>
+                    <tr>
+                      <th>Plugin lane</th>
+                      <th>Good proof</th>
+                      <th>Weak proof</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td data-label="Plugin lane">Meeting and event context</td>
+                      <td data-label="Good proof">Meeting titles, source notes, draft follow-up, missing access</td>
+                      <td data-label="Weak proof">A confident summary with no source boundary</td>
+                    </tr>
+                    <tr>
+                      <td data-label="Plugin lane">Build and verify</td>
+                      <td data-label="Good proof">File links, test output, route check, screenshot</td>
+                      <td data-label="Weak proof">"It should work now"</td>
+                    </tr>
+                    <tr>
+                      <td data-label="Plugin lane">Creative output</td>
+                      <td data-label="Good proof">Variants, selected direction, export path, claim notes</td>
+                      <td data-label="Weak proof">A pretty asset with unsupported claims</td>
+                    </tr>
+                    <tr>
+                      <td data-label="Plugin lane">Data and reporting</td>
+                      <td data-label="Good proof">Source rows, metric definition, caveats, chart artifact</td>
+                      <td data-label="Weak proof">A chart with no denominator or source</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="section-mark-complete">
+                <button class="btn btn-secondary complete-btn" type="button" data-complete="stack">Mark Module 4 complete</button>
+              </div>
+            </section>
+
+            <section class="landing-section glossary-page plugin-glossary" id="glossary" aria-labelledby="glossary-title">
+              <header class="glossary-header">
+                <h1 id="glossary-title">Plain-English plugin glossary</h1>
+                <p>Use these definitions when the names start blurring together.</p>
+              </header>
+              <div class="glossary-grid">
+                <article class="glossary-card">
+                  <h2>Plugin</h2>
+                  <p>A bundled capability that gives Codex a workflow, tool, connector, skill, or app surface.</p>
+                  <p class="glossary-example">Example: Product Design helps turn a screenshot, URL, or brief into a reviewable prototype.</p>
+                </article>
+                <article class="glossary-card">
+                  <h2>Connector</h2>
+                  <p>A live connection to an outside system where real context lives.</p>
+                  <p class="glossary-example">Example: Slack, Gmail, Google Drive, Granola, Zoom, GitHub, Figma.</p>
+                </article>
+                <article class="glossary-card">
+                  <h2>Smoke test</h2>
+                  <p>A small, harmless check that proves a plugin is callable before you rely on it.</p>
+                  <p class="glossary-example">Example: Ask Granola to find one meeting title, or GitHub to list one repo issue.</p>
+                </article>
+              </div>
+            </section>
+
+            <section class="landing-section dashboard" id="checklist" aria-labelledby="checklist-title">
+              <h2 class="landing-section-title" id="checklist-title">Progress checklist</h2>
+              <div class="dashboard-stats">
+                <article class="stat-card">
+                  <p class="stat-card-icon">Complete</p>
+                  <p class="stat-card-value" id="completeCount">0/4</p>
+                  <p class="stat-card-label">Modules marked complete</p>
+                </article>
+                <article class="stat-card">
+                  <p class="stat-card-icon">Quiz</p>
+                  <p class="stat-card-value" id="quizCount">0/4</p>
+                  <p class="stat-card-label">Routing questions answered</p>
+                </article>
+                <article class="stat-card">
+                  <p class="stat-card-icon">Setup</p>
+                  <p class="stat-card-value" id="setupCount">0/5</p>
+                  <p class="stat-card-label">Plugin readiness checks</p>
+                </article>
+                <article class="stat-card">
+                  <p class="stat-card-icon">Proof</p>
+                  <p class="stat-card-value" id="proofHabitCount">0/3</p>
+                  <p class="stat-card-label">Scenario, bounded prompt, and proof expectation</p>
+                </article>
+                <article class="stat-card">
+                  <p class="stat-card-icon">Milestones</p>
+                  <p class="stat-card-value" id="dashboardMilestoneScore">0%</p>
+                  <p class="stat-card-label">Overall measurable readiness</p>
+                </article>
+              </div>
+
+              <div class="next-level-card">
+                <p><strong>Setup means callable, useful, and verified.</strong></p>
+                <p>Most plugins may already be installed. This checklist is about knowing which ones are ready to trust in real work.</p>
+              </div>
+
+              <div class="checklist" id="setupChecklist"></div>
+
+              <div class="source-panel capstone">
+                <h3>Capstone: route one real task</h3>
+                <p>Pick one real task you would normally ask Codex to do. Write the lane, starter prompt, boundary, and proof before running it.</p>
+                <ol>
+                  <li>What kind of work is this?</li>
+                  <li>Which plugin lane should Codex try first?</li>
+                  <li>What should Codex avoid doing?</li>
+                  <li>What proof would make you trust the result?</li>
+                </ol>
+              </div>
+
+              <div class="dashboard-completion-link">
+                <button class="btn btn-success complete-btn" type="button" data-complete="all">Mark course complete</button>
+              </div>
+            </section>
+
+            <section class="attribution-banner" aria-label="source attribution">
+              <div class="attribution-banner-icon" aria-hidden="true">i</div>
+              <div class="attribution-banner-main">
+                <h2>Built from the Codex in Plain English method</h2>
+                <p>This course uses the same plain-English teaching loop, adapted for plugins and connectors.</p>
+              </div>
+              <div class="attribution-banner-links">
+                <a href="https://daniel-p-green.github.io/codex-in-plain-english/">Main course</a>
+                <a href="#overview">Back to top</a>
+              </div>
+            </section>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
