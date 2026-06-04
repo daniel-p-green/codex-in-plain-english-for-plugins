@@ -9,79 +9,79 @@ const scenarios = [
   {
     id: "event",
     number: "Lane 1",
-    title: "Workshop follow-up",
-    tag: "Private connector",
-    text: "You need a recap, attendee follow-up draft, and missing-source list.",
+    title: "Follow up after an event",
+    tag: "Private app access",
+    text: "You need a recap, a thank-you note, and a list of anything still missing.",
     lane: "Slack + Gmail + Calendar + Drive + Granola + Zoom",
-    why: "The work lives across messages, docs, calendar context, meeting notes, and recordings.",
-    prompt: "Use Slack, Gmail, Calendar, Drive, Granola, and Zoom to draft a workshop follow-up packet. Do not send anything. Show sources checked and missing access.",
-    verify: "Look for drafts, source names, missing-access notes, and no external send action."
+    why: "The details may be spread across messages, emails, calendar invites, notes, docs, and recordings.",
+    prompt: "Help me follow up after this event. Look for the relevant messages, calendar item, notes, and docs. Draft only. Do not send anything. Tell me what you checked and what you could not access.",
+    verify: "Look for a draft, a source list, missing-access notes, and no external send action."
   },
   {
     id: "repo",
     number: "Lane 2",
-    title: "Repo fix",
-    tag: "Local or GitHub",
-    text: "You want a bug fixed, tested, and explained from a GitHub repo.",
+    title: "Fix something on a website",
+    tag: "Website or files",
+    text: "Something looks wrong on a site or app, and you want Codex to inspect it and explain the fix.",
     lane: "GitHub + Browser + Computer Use",
-    why: "GitHub gives repo context, Browser checks the visible app, and Computer Use can inspect desktop surfaces.",
-    prompt: "Inspect the repo and live route, fix the bug, run the narrowest useful checks, and summarize what changed with file links.",
-    verify: "Look for changed files, test output, and a live-route or screenshot check."
+    why: "Codex may need to look at the visible page, the files behind it, and sometimes the desktop app.",
+    prompt: "This page is not behaving the way I expect. Inspect the visible page and the related files, make the smallest fix, and show me what changed. Verify it in the browser.",
+    verify: "Look for a before/after explanation, file links, and a browser check."
   },
   {
     id: "design",
     number: "Lane 3",
-    title: "Prototype an idea",
+    title: "Make an idea clickable",
     tag: "Visual workspace",
-    text: "You have a rough product idea and want something people can click.",
+    text: "You have a rough idea and want a screen, prototype, or simple flow people can react to.",
     lane: "Product Design + Figma + Browser",
-    why: "Product Design turns briefs, URLs, and screenshots into reviewable prototypes and audits.",
-    prompt: "Turn this product idea into three directions, then build a clickable prototype after I choose one. Verify desktop and mobile.",
+    why: "Codex can turn a brief, screenshot, or URL into something easier to review.",
+    prompt: "Turn this idea into three simple directions. After I pick one, make a clickable version and check it on desktop and mobile.",
     verify: "Look for directions first, then a runnable prototype with responsive checks."
   },
   {
     id: "creative",
     number: "Lane 4",
-    title: "Social asset pack",
+    title: "Make a social post",
     tag: "Public-demo safe if sanitized",
-    text: "You need polished image or video variants from a brief or source asset.",
+    text: "You need a few polished image or video options from a short brief.",
     lane: "Creative Production + Canva + Fal + Adobe + Remotion/HyperFrames",
-    why: "Creative Production explores directions; Canva and Adobe polish assets; Remotion and HyperFrames help with video.",
-    prompt: "Create three social directions from this brief, keep claims honest, and turn the selected direction into export-ready assets.",
-    verify: "Look for reviewable variants, source and claim notes, and final files or design links."
+    why: "Codex can explore directions, make variants, polish assets, and keep claims grounded.",
+    prompt: "Create three social post directions from this brief. Keep claims honest. After I choose one, make the final asset and show me where it is.",
+    verify: "Look for options, a selected direction, claim notes, and final files or links."
   },
   {
     id: "data",
     number: "Lane 5",
-    title: "Metric question",
-    tag: "Source-backed",
-    text: "You need to understand why a number changed and package the answer.",
+    title: "Understand a number",
+    tag: "Show the source",
+    text: "A number changed and you need a simple explanation with a chart or summary.",
     lane: "Data Analytics + Spreadsheets + Drive",
-    why: "Data Analytics is for metric movement, dashboards, KPI readouts, and evidence-backed reports.",
-    prompt: "Analyze why this metric changed, show assumptions and caveats, then create a short report with charts.",
-    verify: "Look for source tables, calculations, caveats, and a chart or report artifact."
+    why: "Codex can look at the spreadsheet or report source, explain the movement, and make a chart.",
+    prompt: "Help me understand why this number changed. Show the source data you used, explain assumptions in plain English, and make a short chart or summary.",
+    verify: "Look for source rows, a plain-English explanation, caveats, and a chart or report."
   },
   {
     id: "course",
     number: "Lane 6",
-    title: "Teaching material",
+    title: "Turn knowledge into a handout",
     tag: "Artifact",
-    text: "You want a beginner-friendly lesson, deck, or reusable handout.",
+    text: "You want a lesson, deck, guide, checklist, or document someone else can use.",
     lane: "Documents + Presentations + Drive + Browser",
-    why: "The artifact matters more than the connector. Build reusable course material and verify it opens.",
-    prompt: "Turn this topic into a beginner lesson with exercises, a short deck outline, and a reusable handout.",
+    why: "Codex can turn messy notes into a document, deck, or shareable resource.",
+    prompt: "Turn this topic into a beginner-friendly handout with a short outline, exercises, and a checklist. Keep it practical and easy to skim.",
     verify: "Look for a document or deck artifact plus a quick readability and opening check."
   }
 ];
 
 const pluginGroups = [
   {
-    title: "Everyday Context And Relationships",
-    job: "Find the surrounding conversation, prepare meetings, follow up, or use relationship context.",
-    proof: "Source names, timestamps, draft outputs, missing access, and no external send unless approved.",
+    title: "Messages, Meetings, And Follow-Up",
+    job: "Use this when the answer lives in email, calendar, chat, meeting notes, recordings, or your network.",
+    proof: "Ask for the sources checked, draft text, missing access, and confirmation that nothing was sent.",
     plugins: [
-      ["Slack", "Search channels, threads, files, and people; draft messages or canvases."],
-      ["Gmail", "Find emails, triage inbox context, and draft replies."],
+      ["Slack", "Find messages, threads, files, and people; draft updates."],
+      ["Gmail", "Find emails, sort inbox context, and draft replies."],
       ["Google Calendar", "Check schedules, availability, meeting prep, and daily briefs."],
       ["Google Drive", "Work across Drive, Docs, Sheets, and Slides files."],
       ["Granola", "Use meeting notes and transcripts as source context."],
@@ -91,44 +91,44 @@ const pluginGroups = [
     ]
   },
   {
-    title: "Build, Debug, And Ship Software",
-    job: "Inspect code, implement changes, test apps, deploy projects, or work with developer platforms.",
-    proof: "Changed files, command output, route checks, screenshots, deployment URLs, logs, or blockers.",
+    title: "Websites, Apps, And Technical Help",
+    job: "Use this when something has to be checked, fixed, tested, published, or explained by looking at a website, app, or project files.",
+    proof: "Ask for what changed, what was checked, screenshots or links, and anything that still needs a human review.",
     plugins: [
-      ["GitHub", "Inspect repos, issues, pull requests, CI, and publish changes."],
+      ["GitHub", "Look at project files, issues, pull requests, checks, and published changes."],
       ["Browser", "Use the Codex in-app browser for local routes, file URLs, and localhost checks."],
       ["Chrome", "Automate authenticated remote pages, Chrome profiles, tabs, cookies, and extensions."],
-      ["Computer Use", "Control desktop apps on macOS when the work is outside the browser or repo."],
+      ["Computer Use", "Control desktop apps on macOS when the work is outside the browser."],
       ["OpenAI Developers", "Build with OpenAI APIs, Agents SDK, ChatGPT Apps, and API keys."],
       ["ChatGPT Apps", "Build and prepare ChatGPT Apps and submission materials."],
-      ["Build Web Apps", "Build frontend apps, components, browser tests, payments, and web patterns."],
+      ["Build Web Apps", "Build websites, app screens, browser tests, payments, and web patterns."],
       ["Build iOS Apps", "Build and debug iOS apps with SwiftUI, simulators, and performance workflows."],
       ["Build macOS Apps", "Build, run, test, debug, and package macOS apps."],
       ["Expo", "Build, debug, upgrade, and deploy Expo or React Native apps."],
       ["Test Android Apps", "Test Android apps with emulator, screenshots, logs, and performance checks."],
-      ["Cloudflare", "Build Workers, Agents SDK projects, MCP servers, and Cloudflare deployments."],
+      ["Cloudflare", "Build and publish Cloudflare-hosted apps, agents, and services."],
       ["Vercel", "Build and deploy web apps and agents."],
       ["Lovable", "Build and inspect Lovable app projects."]
     ]
   },
   {
-    title: "Data, Databases, Finance, And Reports",
-    job: "Answer metric questions, build dashboards, work with spreadsheets, databases, or market analysis.",
-    proof: "Source rows, queries, metric definitions, caveats, chart artifacts, and refresh boundaries.",
+    title: "Numbers, Spreadsheets, And Money Questions",
+    job: "Use this when you need to understand a spreadsheet, chart, dashboard, database, company, market, or financial question.",
+    proof: "Ask for the source data, assumptions, caveats, calculations, and a chart or plain-English summary.",
     plugins: [
-      ["Data Analytics", "Analyze usage, metric movement, KPIs, dashboards, reports, and semantic layers."],
+      ["Data Analytics", "Explain numbers, metric changes, dashboards, reports, and business questions."],
       ["Build Web Data Visualization", "Create charts, maps, dashboards, reports, and data stories."],
       ["Spreadsheets", "Create, edit, analyze, visualize, and export spreadsheet workbooks."],
-      ["Neon Postgres", "Manage Neon projects, branches, databases, schemas, and SQL queries."],
+      ["Neon Postgres", "Work with Neon databases, tables, and SQL questions."],
       ["Supabase", "Manage Supabase projects, Postgres tables, auth, migrations, and edge functions."],
       ["Public Equity Investing", "Research public companies, earnings, valuation, catalysts, and memos."],
       ["Investment Banking", "Support M&A, valuation, diligence, pitch materials, and deal workflows."]
     ]
   },
   {
-    title: "Design, Creative, Media, And Games",
-    job: "Make visual artifacts, prototypes, videos, campaign directions, game experiences, or generated media.",
-    proof: "Reviewable variants, design links, exported files, screenshots, claim notes, and selected direction.",
+    title: "Design, Images, Video, And Creative Work",
+    job: "Use this when you need something visual: a prototype, flyer, image, video, social post, game, or creative direction.",
+    proof: "Ask for options, the selected direction, export links or files, and notes on any public claims.",
     plugins: [
       ["Product Design", "Turn ideas, screenshots, or URLs into prototypes, audits, and product directions."],
       ["Figma", "Read, generate, edit, and sync designs, FigJam diagrams, and Figma Slides."],
@@ -146,9 +146,9 @@ const pluginGroups = [
     ]
   },
   {
-    title: "Documents, Research, Models, And Technical Knowledge",
-    job: "Create polished documents, presentations, research synthesis, model work, or technical artifacts.",
-    proof: "Exported files, source lists, citations, rendered artifacts, compiled output, or reviewed examples.",
+    title: "Docs, Slides, Research, And Learning",
+    job: "Use this when you need to turn notes or sources into a document, deck, research summary, technical guide, or learning resource.",
+    proof: "Ask for the finished file, source list, citations when needed, and a quick check that it opens or renders.",
     plugins: [
       ["Documents", "Create and edit document artifacts, including Word files and Google Docs."],
       ["Presentations", "Create, edit, render, verify, and export slide decks or PowerPoint files."],
@@ -159,9 +159,9 @@ const pluginGroups = [
     ]
   },
   {
-    title: "Consumer, Commerce, Travel, And Safety Apps",
-    job: "Research purchases, travel, reservations, rides, food, homes, events, learning, markets, or suspicious links.",
-    proof: "Live result links, prices or ranges, dates, locations, risk notes, and a clear handoff before buying or booking.",
+    title: "Shopping, Travel, Food, Homes, And Safety",
+    job: "Use this when you are comparing places, tickets, rides, restaurants, homes, products, courses, prices, or suspicious links.",
+    proof: "Ask for live links, dates, prices, risk notes, and a clear stop before buying or booking.",
     plugins: [
       ["Alpaca", "Ask live market-data questions about stocks, options, crypto, and historical performance."],
       ["Coursera", "Find relevant courses and video lectures for learning goals."],
@@ -176,12 +176,12 @@ const pluginGroups = [
     ]
   },
   {
-    title: "Agent Workflows, Security, Evaluation, And Local Power Tools",
-    job: "Plan agentic work, evaluate plugins, scan security risk, manage goals, or use local helper workflows.",
-    proof: "Plans, findings, reports, receipts, verified scans, saved knowledge, or explicit stop conditions.",
+    title: "Planning, Safety Checks, And Power-User Workflows",
+    job: "Use this when the work needs a plan, security review, evaluation, goal tracking, saved knowledge, or a local helper.",
+    proof: "Ask for the plan, findings, risks, receipts, saved notes, or clear stop conditions.",
     plugins: [
       ["Codex Security", "Run security scans, threat models, attack-path analysis, and finding validation."],
-      ["Plugin Eval", "Evaluate Codex skills and plugins with guided reports and benchmarks."],
+      ["Plugin Eval", "Compare Codex skills and plugins with guided reports and simple benchmarks."],
       ["GoalBuddy", "Turn broad work into goal runs with boards, pressure, receipts, and verification."],
       ["compound-knowledge", "Brainstorm, plan, review, execute, and save knowledge compounds."],
       ["Superpowers", "Use structured software-development methods for planning, TDD, debugging, and collaboration."],
@@ -281,39 +281,39 @@ function getMilestones() {
   const completeCount = moduleIds.filter((id) => completed.has(id)).length;
   return [
     {
-      title: "Routing accuracy",
+      title: "Choosing the helper",
       value: getCorrectQuizCount(),
       target: quizItems.length,
       unit: "correct",
-      description: "Can choose the right plugin lane from real work prompts."
+      description: "Can look at a normal task and pick the right kind of help."
     },
     {
-      title: "Prompt completeness",
+      title: "Clear request",
       value: promptCheckCount,
       target: 6,
       unit: "checks",
-      description: "Includes goal, context, boundary, deliverable, proof, and stop condition."
+      description: "Says the goal, context, boundary, output, proof, and when to stop."
     },
     {
-      title: "Setup readiness",
+      title: "Ready to use",
       value: getChecklistCount(),
       target: checklistItems.length,
       unit: "checks",
-      description: "Verifies auth, smoke test, write boundary, privacy rule, and done signal."
+      description: "Checks sign-in, a tiny test, privacy, limits, and what done means."
     },
     {
-      title: "Proof habit",
+      title: "Trust habit",
       value: getProofHabitCount(),
       target: 3,
       unit: "signals",
-      description: "Selects a scenario, writes a complete prompt, and names expected proof."
+      description: "Asks Codex to show what it checked before trusting the result."
     },
     {
-      title: "Course completion",
+      title: "Practice completed",
       value: completeCount,
       target: moduleIds.length,
       unit: "modules",
-      description: "Finishes the core learning path without relying on passive reading."
+      description: "Finishes the course by practicing, not just reading."
     }
   ];
 }
@@ -351,7 +351,7 @@ function renderScenarios() {
     <button class="module-card scenario-card" type="button" data-scenario="${item.id}">
       <span class="module-card-release updated">${item.number}</span>
       <div class="module-card-meta">
-        <span class="module-card-number">Plugin lane</span>
+        <span class="module-card-number">Helper type</span>
         <span class="scenario-tag">${item.tag}</span>
       </div>
       <h3>${item.title}</h3>
@@ -535,7 +535,7 @@ function resetMeasurements() {
   document.querySelectorAll(".scenario-card").forEach((card) => card.classList.remove("active"));
   document.getElementById("scenarioAnswer").innerHTML = `
     <h3>Choose a scenario</h3>
-    <p>Click a card above to see the plugin lane, starter prompt, and verification habit.</p>
+    <p>Click a card above to see the helper to try, starter prompt, and verification habit.</p>
   `;
 
   document.querySelectorAll(".quiz-option").forEach((choice) => choice.classList.remove("selected", "correct", "wrong"));
