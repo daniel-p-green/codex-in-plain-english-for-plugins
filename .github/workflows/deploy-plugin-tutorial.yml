@@ -34,10 +34,15 @@ jobs:
         with:
           enablement: true
 
+      - name: Prepare static site
+        run: |
+          cp -R plugin-tutorial _site
+          perl -0pi -e "s#href=\"\\./styles\\.css\"#href=\"./styles.css?v=${GITHUB_SHA}\"#; s#src=\"\\./script\\.js\"#src=\"./script.js?v=${GITHUB_SHA}\"#" _site/index.html
+
       - name: Upload static site
         uses: actions/upload-pages-artifact@v3
         with:
-          path: plugin-tutorial
+          path: _site
 
       - name: Deploy to GitHub Pages
         id: deployment
