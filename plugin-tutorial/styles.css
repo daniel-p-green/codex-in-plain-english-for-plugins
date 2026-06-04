@@ -1341,7 +1341,7 @@ button {
 .section-mark-complete {
   margin-top: var(--space-5);
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
 }
 
 .module-section-block {
