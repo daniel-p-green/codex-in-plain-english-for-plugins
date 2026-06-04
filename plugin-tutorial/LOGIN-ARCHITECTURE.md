@@ -17,7 +17,7 @@ Keep login language educational:
 
 > This public course does not log you in by itself. Ask Codex to check whether the helper is signed in and ready.
 
-Do not add a fake "Sign in with ChatGPT" button to the static course. If the project later becomes a real ChatGPT app, build and verify that as a separate app/server lane.
+Do not add a fake "Sign in with ChatGPT" button to the static course. The visible course option should call a real local sign-in helper, and that helper should talk to Codex app-server. If the project later becomes a real ChatGPT app, build and verify that as a separate app/server lane.
 
 ## Verified Codex App-Server Nuance
 
@@ -31,10 +31,12 @@ So the accurate statement is not "Codex app-server cannot do ChatGPT login." It 
 
 > GitHub Pages cannot host or become that app-server by itself.
 
+The browser also cannot connect directly to the loopback WebSocket in the current CLI behavior: Codex app-server rejects browser requests that include an `Origin` header. That is why the implemented course path uses `scripts/codex-login-bridge.mjs` as a local Node bridge.
+
 ## Viable Architectures
 
 1. Static course only: the current public site. Best for normal learners.
-2. Static page plus local Codex app-server bridge: possible for a Codex client/harness where each learner has Codex running and the client is built to talk to it safely. More builder-facing.
+2. Static page plus local Codex sign-in helper: the implemented path. The helper talks to Codex app-server locally and returns only account status or a sign-in link to the page.
 3. Hosted app or MCP server: appropriate if this becomes a real interactive product with OAuth, callbacks, storage, and permission boundaries.
 
 ## Learner-Facing Readiness Prompt

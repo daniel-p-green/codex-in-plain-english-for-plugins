@@ -10,7 +10,7 @@ Every push or merge to `main` or `master` that changes `plugin-tutorial/**` rede
 
 The workflow regenerates one dedicated page per helper before publishing.
 
-This is a static course site. It does not log people into ChatGPT or any helper by itself. The course teaches learners how to ask Codex whether a helper is signed in, tested once, and safe enough for the task.
+This is a static course site. It can offer a ChatGPT login option only when a local Codex sign-in helper is running. The course itself does not store credentials or helper tokens.
 
 ## Open Locally
 
@@ -25,6 +25,17 @@ Then open:
 ```text
 http://localhost:8765/
 ```
+
+## Optional ChatGPT Sign-In Helper
+
+The public GitHub Pages course cannot talk directly to `codex app-server` from browser JavaScript because Codex rejects browser-origin WebSocket requests. The bridge below is the local helper that talks to Codex app-server from Node and returns only status or a sign-in link to the course page.
+
+```bash
+cd plugin-tutorial
+node scripts/codex-login-bridge.mjs
+```
+
+Then open the Connect page and press `Check Codex` or `Connect with ChatGPT`.
 
 ## Course Shape
 
@@ -59,4 +70,4 @@ GitHub Pages is the public course surface. It cannot run the Codex app-server, o
 
 Real helper access happens inside Codex or ChatGPT after the user has connected the relevant account or service.
 
-The Codex app-server lane is real: a Codex client or harness can ask it to start ChatGPT login, including browser auth and device-code flows. That is different from this public static course page. If this becomes a real ChatGPT app or MCP server, build that as a separate authenticated surface instead of faking sign-in on the public course page.
+The Codex app-server lane is real: a Codex client or harness can ask it to start ChatGPT login, including browser auth and device-code flows. In this course, that path runs through `scripts/codex-login-bridge.mjs`, which stays local and does not persist tokens. If this becomes a real ChatGPT app or MCP server, build that as a separate authenticated surface instead of faking sign-in on the public course page.

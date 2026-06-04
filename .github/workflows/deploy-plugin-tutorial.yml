@@ -38,7 +38,7 @@ jobs:
         run: |
           node plugin-tutorial/scripts/generate-helper-pages.mjs
           cp -R plugin-tutorial _site
-          find _site -name "*.html" -print0 | xargs -0 perl -0pi -e "s#(href=\"(?:\\.\\./|\\./|\\.\\./\\.\\./)?styles\\.css)(\")#\${1}?v=${GITHUB_SHA}\${2}#g; s#(src=\"(?:\\.\\./|\\./|\\.\\./\\.\\./)?(?:script|helpers-page|helper-detail)\\.js)(\")#\${1}?v=${GITHUB_SHA}\${2}#g"
+          find _site -name "*.html" -print0 | xargs -0 perl -0pi -e "s#(href=\"(?:\\.\\./|\\./|\\.\\./\\.\\./)?styles\\.css)(\")#\${1}?v=${GITHUB_SHA}\${2}#g; s#(src=\"(?:\\.\\./|\\./|\\.\\./\\.\\./)?(?:script|helpers-page|helper-detail|connect)\\.js)(\")#\${1}?v=${GITHUB_SHA}\${2}#g"
           find _site -name "*.js" -print0 | xargs -0 perl -0pi -e "s#from \"((?:\\.\\./|\\./)?course-data\\.mjs)\"#from \"\${1}?v=${GITHUB_SHA}\"#g"
 
       - name: Upload static site
