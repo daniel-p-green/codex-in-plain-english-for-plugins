@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Setup and trust checks for Codex in Plain English for Plugins."
+    />
+    <title>Setup and Trust Checks | Codex in Plain English for Plugins</title>
+    <script>
+      document.documentElement.dataset.theme = localStorage.getItem("pluginCourseTheme") || "light";
+    </script>
+    <link rel="icon" href="../favicon-trex.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+    <header class="top-nav subpage-nav">
+      <div class="top-nav-inner">
+        <a href="../" class="top-nav-brand" aria-label="Codex in Plain English for Plugins">
+          <span class="top-nav-brand-dex" aria-hidden="true">🦖</span>
+          <span class="top-nav-brand-text top-nav-brand-text-full" aria-hidden="true">
+            Codex in Plain English for Plugins
+          </span>
+          <span class="top-nav-brand-text top-nav-brand-text-compact" aria-hidden="true">Plugins</span>
+        </a>
+
+        <nav class="top-nav-links" aria-label="Primary">
+          <a class="top-nav-link" href="../">Home</a>
+          <a class="top-nav-link" href="../#lessons">Lessons</a>
+          <a class="top-nav-link" href="../helpers/">Helpers</a>
+          <a class="top-nav-link" href="../lessons/practice-routing-reflex/">Practice</a>
+        </nav>
+
+        <div class="top-nav-actions">
+          <button class="top-nav-login" type="button" data-login-open aria-label="Sign in with ChatGPT">
+            <span class="top-nav-login-full">Sign in</span>
+            <span class="top-nav-login-compact">Sign in</span>
+          </button>
+          <a href="../helpers/" class="top-nav-cta top-nav-continue" aria-label="Open helper map">
+            <span class="top-nav-cta-label top-nav-cta-label-full">Helper Map</span>
+            <span class="top-nav-cta-label top-nav-cta-label-compact">Helpers</span>
+            <span class="top-nav-cta-meta" id="progressText">0% complete</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" class="subpage-main">
+      <div class="page-container lesson-page">
+        <nav class="lesson-breadcrumb" aria-label="Breadcrumb">
+          <a href="../">Course</a>
+          <span>/</span>
+          <strong>Setup</strong>
+        </nav>
+
+        <section class="lesson-hero">
+          <p class="section-kicker">Setup support</p>
+          <h1>Before you rely on a helper.</h1>
+          <p>This page is for trust checks: sign-in, tiny tests, privacy boundaries, and proof habits.</p>
+        </section>
+
+        <section class="landing-section plugin-readiness" aria-labelledby="plugin-readiness-title">
+          <h2 class="landing-section-title" id="plugin-readiness-title">Readiness model</h2>
+          <div class="module-orientation plugin-readiness-grid">
+            <div class="module-orientation-item">
+              <h2>Sign in</h2>
+              <p>Connect only the accounts the task actually needs. If a helper is not signed in, ask Codex to say so plainly.</p>
+            </div>
+            <div class="module-orientation-item">
+              <h2>Smoke test</h2>
+              <p>Try one harmless lookup first, like finding a meeting title, a file name, a Slack thread, or a visible page.</p>
+            </div>
+            <div class="module-orientation-item">
+              <h2>Keep control</h2>
+              <p>For anything public, private, or external, ask Codex to draft first and stop before sending, publishing, buying, or changing access.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="landing-section dashboard" id="checklist" aria-labelledby="checklist-title">
+          <h2 class="landing-section-title" id="checklist-title">Progress checklist</h2>
+          <div class="dashboard-stats">
+            <article class="stat-card">
+              <p class="stat-card-icon">Complete</p>
+              <p class="stat-card-value" id="completeCount">0/4</p>
+              <p class="stat-card-label">Lessons marked complete</p>
+            </article>
+            <article class="stat-card">
+              <p class="stat-card-icon">Quiz</p>
+              <p class="stat-card-value" id="quizCount">0/4</p>
+              <p class="stat-card-label">Routing questions answered</p>
+            </article>
+            <article class="stat-card">
+              <p class="stat-card-icon">Setup</p>
+              <p class="stat-card-value" id="setupCount">0/5</p>
+              <p class="stat-card-label">Helper readiness checks</p>
+            </article>
+            <article class="stat-card">
+              <p class="stat-card-icon">Proof</p>
+              <p class="stat-card-value" id="proofHabitCount">0/3</p>
+              <p class="stat-card-label">Scenario, bounded prompt, and proof expectation</p>
+            </article>
+            <article class="stat-card">
+              <p class="stat-card-icon">Milestones</p>
+              <p class="stat-card-value" id="dashboardMilestoneScore">0%</p>
+              <p class="stat-card-label">Overall measurable readiness</p>
+            </article>
+          </div>
+
+          <div class="next-level-card">
+            <p><strong>Setup means signed in, tested once, and safe enough.</strong></p>
+            <p>Most helpers may already exist. This checklist is about knowing which ones are ready to trust in real work.</p>
+          </div>
+
+          <div class="checklist" id="setupChecklist"></div>
+
+          <div class="source-panel capstone">
+            <h3>Capstone: route one real task</h3>
+            <p>Pick one real task you would normally ask Codex to do. Write the lane, starter prompt, boundary, and proof before running it.</p>
+            <ol>
+              <li>What kind of work is this?</li>
+              <li>Which helper should Codex try first?</li>
+              <li>What should Codex avoid doing?</li>
+              <li>What proof would make you trust the result?</li>
+            </ol>
+          </div>
+
+          <div class="dashboard-completion-link">
+            <button class="btn btn-success complete-btn" type="button" data-complete="all">Mark course complete</button>
+          </div>
+        </section>
+
+        <section class="measurement-panel" aria-labelledby="measurement-title">
+          <div class="measurement-header">
+            <div>
+              <p class="section-kicker">Milestones</p>
+              <h2 id="measurement-title">How improvement is measured</h2>
+              <p>Targets are tied to the job: describe the task, choose the right helper, keep private work safe, and know what proof to ask for.</p>
+            </div>
+            <div class="measurement-score" aria-label="Overall milestone score">
+              <strong id="milestoneScore">0%</strong>
+              <span>confidence</span>
+            </div>
+          </div>
+          <div class="measurement-actions">
+            <button class="btn btn-secondary" id="resetMeasurements" type="button">Reset measurements</button>
+          </div>
+          <div class="milestone-grid" id="milestoneGrid"></div>
+        </section>
+
+        <nav class="lesson-next-links" aria-label="Reference navigation">
+          <a class="btn btn-secondary" href="../lessons/where-work-lives/">Back to lesson 4</a>
+          <a class="btn btn-primary" href="../helpers/">Open helper map</a>
+        </nav>
+
+        <footer class="footer course-footer">
+          <div class="footer-credit">
+            <p class="footer-byline">Created by Daniel Green</p>
+            <nav class="footer-social-links" aria-label="Daniel Green social links">
+              <a href="https://x.com/dgrreen" target="_blank" rel="me noopener">X</a>
+              <a href="https://www.linkedin.com/in/danielpgreen" target="_blank" rel="me noopener">LinkedIn</a>
+            </nav>
+            <button class="theme-toggle footer-theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode">
+              <span class="theme-toggle-sun" aria-hidden="true">Light</span>
+              <span class="theme-toggle-moon" aria-hidden="true">Dark</span>
+            </button>
+          </div>
+        </footer>
+      </div>
+    </main>
+
+    <script src="../script.js"></script>
+    <script src="../connect.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Plain-English glossary for Codex helpers, plugins, skills, connectors, and smoke tests."
+    />
+    <title>Glossary | Codex in Plain English for Plugins</title>
+    <script>
+      document.documentElement.dataset.theme = localStorage.getItem("pluginCourseTheme") || "light";
+    </script>
+    <link rel="icon" href="../favicon-trex.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+    <header class="top-nav subpage-nav">
+      <div class="top-nav-inner">
+        <a href="../" class="top-nav-brand" aria-label="Codex in Plain English for Plugins">
+          <span class="top-nav-brand-dex" aria-hidden="true">🦖</span>
+          <span class="top-nav-brand-text top-nav-brand-text-full" aria-hidden="true">
+            Codex in Plain English for Plugins
+          </span>
+          <span class="top-nav-brand-text top-nav-brand-text-compact" aria-hidden="true">Plugins</span>
+        </a>
+
+        <nav class="top-nav-links" aria-label="Primary">
+          <a class="top-nav-link" href="../">Home</a>
+          <a class="top-nav-link" href="../#lessons">Lessons</a>
+          <a class="top-nav-link" href="../helpers/">Helpers</a>
+          <a class="top-nav-link" href="../lessons/practice-routing-reflex/">Practice</a>
+        </nav>
+
+        <div class="top-nav-actions">
+          <button class="top-nav-login" type="button" data-login-open aria-label="Sign in with ChatGPT">
+            <span class="top-nav-login-full">Sign in</span>
+            <span class="top-nav-login-compact">Sign in</span>
+          </button>
+          <a href="../lessons/choose-right-help/" class="top-nav-cta">Start course</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" class="subpage-main">
+      <div class="page-container glossary-page plugin-glossary">
+        <nav class="lesson-breadcrumb" aria-label="Breadcrumb">
+          <a href="../">Course</a>
+          <span>/</span>
+          <strong>Glossary</strong>
+        </nav>
+
+        <header class="glossary-header">
+          <p class="section-kicker">Plain English</p>
+          <h1 id="glossary-title">Helper glossary</h1>
+          <p>Use these definitions when the names start blurring together.</p>
+        </header>
+
+        <div class="glossary-grid">
+          <article class="glossary-card">
+            <h2>Helper</h2>
+            <p>The normal-person word for the thing Codex uses to help with a task.</p>
+            <p class="glossary-example">Example: “Use the meeting helper” is easier than naming the whole stack.</p>
+          </article>
+          <article class="glossary-card">
+            <h2>Plugin</h2>
+            <p>A kit Codex can use for a kind of work.</p>
+            <p class="glossary-example">Example: Product Design helps with screenshots, URLs, and prototypes.</p>
+          </article>
+          <article class="glossary-card">
+            <h2>Skill</h2>
+            <p>A playbook that tells Codex how to do one task well.</p>
+            <p class="glossary-example">Example: a security skill can guide what to check and how to report it.</p>
+          </article>
+          <article class="glossary-card">
+            <h2>Connector</h2>
+            <p>A connection to an outside account where your real work lives.</p>
+            <p class="glossary-example">Example: Slack, Gmail, Drive, Calendar, Zoom, GitHub.</p>
+          </article>
+          <article class="glossary-card">
+            <h2>Smoke test</h2>
+            <p>A small, harmless check that proves a helper works before you rely on it.</p>
+            <p class="glossary-example">Example: ask Granola to find one meeting title, or ask Drive to find one document.</p>
+          </article>
+        </div>
+
+        <nav class="lesson-next-links" aria-label="Reference navigation">
+          <a class="btn btn-secondary" href="../">Back to course hub</a>
+          <a class="btn btn-primary" href="../helpers/">Open helper map</a>
+        </nav>
+
+        <footer class="footer course-footer">
+          <div class="footer-credit">
+            <p class="footer-byline">Created by Daniel Green</p>
+            <nav class="footer-social-links" aria-label="Daniel Green social links">
+              <a href="https://x.com/dgrreen" target="_blank" rel="me noopener">X</a>
+              <a href="https://www.linkedin.com/in/danielpgreen" target="_blank" rel="me noopener">LinkedIn</a>
+            </nav>
+            <button class="theme-toggle footer-theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode">
+              <span class="theme-toggle-sun" aria-hidden="true">Light</span>
+              <span class="theme-toggle-moon" aria-hidden="true">Dark</span>
+            </button>
+          </div>
+        </footer>
+      </div>
+    </main>
+
+    <script src="../script.js"></script>
+    <script src="../connect.js" defer></script>
+  </body>
+</html>

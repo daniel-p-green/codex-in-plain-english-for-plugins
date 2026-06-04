@@ -1,9 +1,17 @@
 const moduleIds = ["router", "prompts", "lab", "stack"];
 const completed = new Set(JSON.parse(localStorage.getItem("pluginCourseCompleted") || "[]"));
-const answeredQuiz = new Set();
+const answeredQuiz = new Set(JSON.parse(localStorage.getItem("pluginCourseAnsweredQuiz") || "[]"));
+const quizSelections = JSON.parse(localStorage.getItem("pluginCourseQuizSelections") || "{}");
 let selectedScenarioId = localStorage.getItem("pluginCourseSelectedScenario") || "";
-let promptCheckCount = 0;
-let promptMeasured = false;
+let promptCheckCount = Number(localStorage.getItem("pluginCoursePromptCheckCount") || "0");
+let promptMeasured = promptCheckCount > 0;
+
+const byId = (id) => document.getElementById(id);
+
+function setText(id, value) {
+  const node = byId(id);
+  if (node) node.textContent = value;
+}
 
 function setTheme(theme) {
   const nextTheme = theme === "dark" ? "dark" : "light";
@@ -255,23 +263,30 @@ function saveProgress() {
   const completeCount = moduleIds.filter((id) => completed.has(id)).length;
   const pct = Math.round((completeCount / moduleIds.length) * 100);
   const xp = completeCount * 125 + answeredQuiz.size * 25;
-  document.getElementById("progressText").textContent = `${pct}% complete`;
-  const xpValue = document.getElementById("xpValue");
-  const levelValue = document.getElementById("levelValue");
+  setText("progressText", `${pct}% complete`);
+  const xpValue = byId("xpValue");
+  const levelValue = byId("levelValue");
   if (xpValue) xpValue.textContent = String(xp);
   if (levelValue) levelValue.textContent = `Lv.${Math.max(1, Math.ceil((xp || 1) / 250))}`;
-  document.getElementById("completeCount").textContent = `${completeCount}/${moduleIds.length}`;
-  document.getElementById("quizCount").textContent = `${answeredQuiz.size}/${quizItems.length}`;
-  const checked = [...document.querySelectorAll(".check-item input")].filter((item) => item.checked).length;
-  document.getElementById("setupCount").textContent = `${checked}/${checklistItems.length}`;
-  document.getElementById("proofHabitCount").textContent = `${getProofHabitCount()}/3`;
-  document.getElementById("sidebarStatus").textContent = pct === 100 ? "Done" : "Start";
-  localStorage.setItem("pluginCourseChecklist", JSON.stringify([...document.querySelectorAll(".check-item input")].map((item) => item.checked)));
+  setText("completeCount", `${completeCount}/${moduleIds.length}`);
+  setText("quizCount", `${answeredQuiz.size}/${quizItems.length}`);
+  const checklistInputs = [...document.querySelectorAll(".check-item input")];
+  const checked = checklistInputs.filter((item) => item.checked).length;
+  setText("setupCount", `${checked}/${checklistItems.length}`);
+  setText("proofHabitCount", `${getProofHabitCount()}/3`);
+  setText("sidebarStatus", pct === 100 ? "Done" : "Start");
+  if (checklistInputs.length) {
+    localStorage.setItem("pluginCourseChecklist", JSON.stringify(checklistInputs.map((item) => item.checked)));
+  }
   renderMilestones();
 }
 
 function getCorrectQuizCount() {
-  return [...document.querySelectorAll(".quiz-card")].filter((card) => {
+  const cards = [...document.querySelectorAll(".quiz-card")];
+  if (!cards.length) {
+    return quizItems.filter((item, index) => quizSelections[index] === item.correct).length;
+  }
+  return cards.filter((card) => {
     const selected = card.querySelector(".quiz-option.selected");
     return selected?.classList.contains("correct");
   }).length;
@@ -331,15 +346,15 @@ function getMilestones() {
 }
 
 function renderMilestones() {
-  const grid = document.getElementById("milestoneGrid");
-  if (!grid) return;
+  const grid = byId("milestoneGrid");
   const milestones = getMilestones();
   const totalPct = Math.round(
     milestones.reduce((sum, item) => sum + Math.min(item.value / item.target, 1), 0) / milestones.length * 100
   );
 
-  document.getElementById("milestoneScore").textContent = `${totalPct}%`;
-  document.getElementById("dashboardMilestoneScore").textContent = `${totalPct}%`;
+  setText("milestoneScore", `${totalPct}%`);
+  setText("dashboardMilestoneScore", `${totalPct}%`);
+  if (!grid) return;
   grid.innerHTML = milestones.map((item) => {
     const pct = Math.round(Math.min(item.value / item.target, 1) * 100);
     return `
@@ -358,7 +373,9 @@ function renderMilestones() {
 }
 
 function renderScenarios() {
-  const grid = document.getElementById("scenarioGrid");
+  const grid = byId("scenarioGrid");
+  const answer = byId("scenarioAnswer");
+  if (!grid || !answer) return;
   grid.innerHTML = scenarios.map((item) => `
     <button class="module-card scenario-card" type="button" data-scenario="${item.id}">
       <div class="scenario-card-head">
@@ -378,7 +395,7 @@ function renderScenarios() {
     selectedScenarioId = item.id;
     localStorage.setItem("pluginCourseSelectedScenario", selectedScenarioId);
     document.querySelectorAll(".scenario-card").forEach((node) => node.classList.toggle("active", node === card));
-    document.getElementById("scenarioAnswer").innerHTML = `
+    answer.innerHTML = `
       <h3>${item.title}</h3>
       <div class="answer-grid">
         <div><span>Use</span><strong>${item.lane}</strong></div>
@@ -391,7 +408,7 @@ function renderScenarios() {
     saveProgress();
   });
 
-  document.getElementById("scenarioAnswer").addEventListener("click", async (event) => {
+  answer.addEventListener("click", async (event) => {
     const button = event.target.closest(".scenario-copy");
     if (!button) return;
     const item = scenarios.find((scenario) => scenario.id === button.dataset.copyPrompt);
@@ -402,10 +419,10 @@ function renderScenarios() {
 }
 
 function renderPluginDirectory() {
-  const directory = document.getElementById("pluginDirectory");
+  const directory = byId("pluginDirectory");
   if (!directory) return;
   const pluginCount = pluginGroups.reduce((sum, group) => sum + group.plugins.length, 0);
-  document.getElementById("pluginCount").textContent = String(pluginCount);
+  setText("pluginCount", String(pluginCount));
   directory.innerHTML = pluginGroups.map((group) => `
     <article class="plugin-directory-group">
       <div class="plugin-directory-group-head">
@@ -427,7 +444,9 @@ function renderPluginDirectory() {
 }
 
 function buildPrompt({ measure = true } = {}) {
-  const form = document.getElementById("promptForm");
+  const form = byId("promptForm");
+  const output = byId("promptOutput");
+  if (!form || !output) return;
   const values = Object.fromEntries(new FormData(form).entries());
   const prompt = `Goal: ${values.goal}
 
@@ -441,11 +460,13 @@ Done when: ${values.done}
 
 Stop and ask if: ${values.stop}`;
 
-  document.getElementById("promptOutput").textContent = prompt;
+  output.textContent = prompt;
   renderPromptFeedback(prompt, measure);
 }
 
 function renderPromptFeedback(prompt, measure = true) {
+  const feedback = byId("promptFeedback");
+  if (!feedback) return;
   const checks = [
     ["Goal", /Goal:\s+\S/i.test(prompt)],
     ["Context", /Context:\s+\S/i.test(prompt)],
@@ -457,10 +478,13 @@ function renderPromptFeedback(prompt, measure = true) {
   const passed = checks.filter(([, ok]) => ok).length;
   promptMeasured = measure;
   promptCheckCount = promptMeasured ? passed : 0;
+  if (promptMeasured) {
+    localStorage.setItem("pluginCoursePromptCheckCount", String(promptCheckCount));
+  }
   const summary = promptMeasured
     ? `${passed}/6 prompt checks present.`
     : `Example prompt: ${passed}/6 checks present. Build your starter prompt to count it.`;
-  document.getElementById("promptFeedback").innerHTML = `
+  feedback.innerHTML = `
     <strong>${summary}</strong>
     <span>${checks.map(([label, ok]) => `${ok ? "✓" : "•"} ${label}`).join(" · ")}</span>
   `;
@@ -468,15 +492,26 @@ function renderPromptFeedback(prompt, measure = true) {
 }
 
 function renderQuiz() {
-  const quiz = document.getElementById("quiz");
+  const quiz = byId("quiz");
+  if (!quiz) return;
   quiz.innerHTML = quizItems.map((item, index) => `
     <article class="quiz-card" data-index="${index}">
       <h3>${index + 1}. ${item.question}</h3>
       <p>Choose the best lane.</p>
       <div class="quiz-options">
-        ${item.options.map((option) => `<button class="quiz-option" type="button" data-answer="${option}">${option}</button>`).join("")}
+        ${item.options.map((option) => {
+          const selected = quizSelections[index] === option;
+          const revealed = answeredQuiz.has(index);
+          const classes = [
+            "quiz-option",
+            selected ? "selected" : "",
+            revealed && option === item.correct ? "correct" : "",
+            revealed && selected && option !== item.correct ? "wrong" : ""
+          ].filter(Boolean).join(" ");
+          return `<button class="${classes}" type="button" data-answer="${option}">${option}</button>`;
+        }).join("")}
       </div>
-      <p class="quiz-feedback" hidden></p>
+      <p class="quiz-feedback" ${answeredQuiz.has(index) ? "" : "hidden"}>${answeredQuiz.has(index) ? item.note : ""}</p>
     </article>
   `).join("");
 
@@ -487,6 +522,9 @@ function renderQuiz() {
     const index = Number(card.dataset.index);
     const item = quizItems[index];
     answeredQuiz.add(index);
+    quizSelections[index] = button.dataset.answer;
+    localStorage.setItem("pluginCourseAnsweredQuiz", JSON.stringify([...answeredQuiz]));
+    localStorage.setItem("pluginCourseQuizSelections", JSON.stringify(quizSelections));
     card.querySelectorAll(".quiz-option").forEach((choice) => {
       choice.classList.remove("selected", "correct", "wrong");
       if (choice.dataset.answer === item.correct) choice.classList.add("correct");
@@ -503,11 +541,12 @@ function renderQuiz() {
 
 function updateScore() {
   const correct = getCorrectQuizCount();
-  document.getElementById("score").textContent = `${correct} of ${quizItems.length} correct. ${answeredQuiz.size}/${quizItems.length} attempted.`;
+  setText("score", `${correct} of ${quizItems.length} correct. ${answeredQuiz.size}/${quizItems.length} attempted.`);
 }
 
 function renderChecklist() {
-  const checklist = document.getElementById("setupChecklist");
+  const checklist = byId("setupChecklist");
+  if (!checklist) return;
   const saved = JSON.parse(localStorage.getItem("pluginCourseChecklist") || "[]");
   checklist.innerHTML = checklistItems.map((item, index) => `
     <label class="check-item module-orientation-item">
@@ -539,22 +578,31 @@ function resetMeasurements() {
   completed.clear();
   answeredQuiz.clear();
   selectedScenarioId = "";
+  Object.keys(quizSelections).forEach((key) => delete quizSelections[key]);
+  promptCheckCount = 0;
+  promptMeasured = false;
   localStorage.removeItem("pluginCourseCompleted");
   localStorage.removeItem("pluginCourseChecklist");
   localStorage.removeItem("pluginCourseSelectedScenario");
+  localStorage.removeItem("pluginCourseAnsweredQuiz");
+  localStorage.removeItem("pluginCourseQuizSelections");
+  localStorage.removeItem("pluginCoursePromptCheckCount");
 
   document.querySelectorAll(".scenario-card").forEach((card) => card.classList.remove("active"));
-  document.getElementById("scenarioAnswer").innerHTML = `
-    <h3>Choose a scenario</h3>
-    <p>Click a card above to see the helper to try, starter prompt, and verification habit.</p>
-  `;
+  const scenarioAnswer = byId("scenarioAnswer");
+  if (scenarioAnswer) {
+    scenarioAnswer.innerHTML = `
+      <h3>Choose a scenario</h3>
+      <p>Click a card above to see the helper to try, starter prompt, and verification habit.</p>
+    `;
+  }
 
   document.querySelectorAll(".quiz-option").forEach((choice) => choice.classList.remove("selected", "correct", "wrong"));
   document.querySelectorAll(".quiz-feedback").forEach((feedback) => {
     feedback.hidden = true;
     feedback.textContent = "";
   });
-  document.getElementById("score").textContent = "Answer the scenarios to get your score.";
+  setText("score", "Answer the scenarios to get your score.");
 
   document.querySelectorAll(".check-item input").forEach((item) => {
     item.checked = false;
@@ -565,11 +613,13 @@ function resetMeasurements() {
 }
 
 function wireMeasurementReset() {
-  document.getElementById("resetMeasurements").addEventListener("click", resetMeasurements);
+  byId("resetMeasurements")?.addEventListener("click", resetMeasurements);
 }
 
 function wireActiveNav() {
-  const links = [...document.querySelectorAll(".left-sidebar-link, .top-nav-link")];
+  const links = [...document.querySelectorAll(".left-sidebar-link, .top-nav-link")]
+    .filter((link) => link.getAttribute("href")?.startsWith("#"));
+  if (!links.length) return;
   const sections = [...document.querySelectorAll("main section[id]")];
   const observer = new IntersectionObserver((entries) => {
     const visible = entries
@@ -629,20 +679,20 @@ function wireThemeToggle() {
   });
 }
 
-document.getElementById("promptForm").addEventListener("submit", (event) => {
+byId("promptForm")?.addEventListener("submit", (event) => {
   event.preventDefault();
   buildPrompt({ measure: true });
 });
 
-document.getElementById("copyPrompt").addEventListener("click", async () => {
-  const text = document.getElementById("promptOutput").textContent;
+byId("copyPrompt")?.addEventListener("click", async () => {
+  const text = byId("promptOutput")?.textContent || "";
   await navigator.clipboard.writeText(text);
-  document.getElementById("copyPrompt").textContent = "Copied";
-  setTimeout(() => (document.getElementById("copyPrompt").textContent = "Copy"), 1200);
+  setText("copyPrompt", "Copied");
+  setTimeout(() => setText("copyPrompt", "Copy"), 1200);
 });
 
-if (location.protocol === "file:") {
-  document.getElementById("serverNotice").hidden = false;
+if (location.protocol === "file:" && byId("serverNotice")) {
+  byId("serverNotice").hidden = false;
 }
 
 renderScenarios();

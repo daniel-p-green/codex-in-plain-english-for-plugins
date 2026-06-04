@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Lesson 2 of Codex in Plain English for Plugins: write a starter prompt with boundaries and proof."
+    />
+    <title>Write the Starter Prompt | Codex in Plain English for Plugins</title>
+    <script>
+      document.documentElement.dataset.theme = localStorage.getItem("pluginCourseTheme") || "light";
+    </script>
+    <link rel="icon" href="../../favicon-trex.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+    <header class="top-nav subpage-nav">
+      <div class="top-nav-inner">
+        <a href="../../" class="top-nav-brand" aria-label="Codex in Plain English for Plugins">
+          <span class="top-nav-brand-dex" aria-hidden="true">🦖</span>
+          <span class="top-nav-brand-text top-nav-brand-text-full" aria-hidden="true">
+            Codex in Plain English for Plugins
+          </span>
+          <span class="top-nav-brand-text top-nav-brand-text-compact" aria-hidden="true">Plugins</span>
+        </a>
+
+        <nav class="top-nav-links" aria-label="Primary">
+          <a class="top-nav-link" href="../../">Home</a>
+          <a class="top-nav-link active" href="../../#lessons">Lessons</a>
+          <a class="top-nav-link" href="../../helpers/">Helpers</a>
+          <a class="top-nav-link" href="../practice-routing-reflex/">Practice</a>
+        </nav>
+
+        <div class="top-nav-actions">
+          <button class="top-nav-login" type="button" data-login-open aria-label="Sign in with ChatGPT">
+            <span class="top-nav-login-full">Sign in</span>
+            <span class="top-nav-login-compact">Sign in</span>
+          </button>
+          <a href="../practice-routing-reflex/" class="top-nav-cta top-nav-continue" aria-label="Continue to lesson 3">
+            <span class="top-nav-cta-label top-nav-cta-label-full">Next Lesson</span>
+            <span class="top-nav-cta-label top-nav-cta-label-compact">Next</span>
+            <span class="top-nav-cta-meta" id="progressText">0% complete</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" class="subpage-main">
+      <div class="page-container lesson-page">
+        <nav class="lesson-breadcrumb" aria-label="Breadcrumb">
+          <a href="../../">Course</a>
+          <span>/</span>
+          <strong>Lesson 2</strong>
+        </nav>
+
+        <section class="lesson-hero">
+          <p class="section-kicker">Lesson 2</p>
+          <h1>Write the starter prompt.</h1>
+          <p>A strong helper request names the outcome, the source, the boundary, the deliverable, and the proof you expect.</p>
+        </section>
+
+        <section class="landing-section lesson-module" id="prompts" aria-labelledby="prompts-title">
+          <h2 class="landing-section-title" id="prompts-title">Write the starter prompt</h2>
+          <div class="module-orientation">
+            <div class="module-orientation-item">
+              <h2>Plain-English rule</h2>
+              <p>Tell Codex the outcome and the boundary. Do not lead with a tool name unless the tool matters.</p>
+            </div>
+            <div class="module-orientation-item">
+              <h2>Verification rule</h2>
+              <p>Every helper prompt should say what proof you expect before Codex calls the work done.</p>
+            </div>
+          </div>
+
+          <div class="prompt-rubric" aria-label="Prompt quality rubric">
+            <h3>Strong helper prompts include</h3>
+            <ul>
+              <li>Goal</li>
+              <li>Context source</li>
+              <li>Boundary</li>
+              <li>Deliverable</li>
+              <li>Proof</li>
+              <li>Stop condition</li>
+            </ul>
+          </div>
+
+          <form class="prompt-builder" id="promptForm">
+            <label>Goal<textarea name="goal">Help me prepare for tomorrow's workshop follow-up.</textarea></label>
+            <label>Context<textarea name="context">Use recent Slack, Gmail, Calendar, Granola, and Drive context if available.</textarea></label>
+            <label>Boundaries<textarea name="boundaries">Do not send messages or expose private attendee data. Draft only.</textarea></label>
+            <label>Deliverable<textarea name="deliverable">A short follow-up plan, draft email, and source checklist.</textarea></label>
+            <label>Done when<textarea name="done">I can see the draft, the sources checked, and any missing access called out.</textarea></label>
+            <label>Stop and ask if<textarea name="stop">You need to send anything externally or access a private connector I have not named.</textarea></label>
+            <button class="btn btn-primary" type="submit">Build starter prompt</button>
+          </form>
+
+          <div class="source-panel generated">
+            <div class="generated-head">
+              <h3>Starter prompt</h3>
+              <button class="btn btn-secondary" id="copyPrompt" type="button">Copy</button>
+            </div>
+            <pre id="promptOutput"></pre>
+          </div>
+          <div class="prompt-feedback" id="promptFeedback" aria-live="polite"></div>
+          <div class="section-mark-complete">
+            <button class="btn btn-secondary complete-btn" type="button" data-complete="prompts">Mark lesson 2 complete</button>
+          </div>
+        </section>
+
+        <nav class="lesson-next-links" aria-label="Lesson navigation">
+          <a class="btn btn-secondary" href="../choose-right-help/">Back: Choose the right help</a>
+          <a class="btn btn-primary" href="../practice-routing-reflex/">Next: Practice the routing reflex</a>
+        </nav>
+
+        <footer class="footer course-footer">
+          <div class="footer-credit">
+            <p class="footer-byline">Created by Daniel Green</p>
+            <nav class="footer-social-links" aria-label="Daniel Green social links">
+              <a href="https://x.com/dgrreen" target="_blank" rel="me noopener">X</a>
+              <a href="https://www.linkedin.com/in/danielpgreen" target="_blank" rel="me noopener">LinkedIn</a>
+            </nav>
+            <button class="theme-toggle footer-theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode">
+              <span class="theme-toggle-sun" aria-hidden="true">Light</span>
+              <span class="theme-toggle-moon" aria-hidden="true">Dark</span>
+            </button>
+          </div>
+        </footer>
+      </div>
+    </main>
+
+    <script src="../../script.js"></script>
+    <script src="../../connect.js" defer></script>
+  </body>
+</html>

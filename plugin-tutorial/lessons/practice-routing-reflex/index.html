@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Lesson 3 of Codex in Plain English for Plugins: practice choosing the right helper lane."
+    />
+    <title>Practice the Routing Reflex | Codex in Plain English for Plugins</title>
+    <script>
+      document.documentElement.dataset.theme = localStorage.getItem("pluginCourseTheme") || "light";
+    </script>
+    <link rel="icon" href="../../favicon-trex.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+    <header class="top-nav subpage-nav">
+      <div class="top-nav-inner">
+        <a href="../../" class="top-nav-brand" aria-label="Codex in Plain English for Plugins">
+          <span class="top-nav-brand-dex" aria-hidden="true">🦖</span>
+          <span class="top-nav-brand-text top-nav-brand-text-full" aria-hidden="true">
+            Codex in Plain English for Plugins
+          </span>
+          <span class="top-nav-brand-text top-nav-brand-text-compact" aria-hidden="true">Plugins</span>
+        </a>
+
+        <nav class="top-nav-links" aria-label="Primary">
+          <a class="top-nav-link" href="../../">Home</a>
+          <a class="top-nav-link active" href="../../#lessons">Lessons</a>
+          <a class="top-nav-link" href="../../helpers/">Helpers</a>
+          <a class="top-nav-link active" href="./">Practice</a>
+        </nav>
+
+        <div class="top-nav-actions">
+          <button class="top-nav-login" type="button" data-login-open aria-label="Sign in with ChatGPT">
+            <span class="top-nav-login-full">Sign in</span>
+            <span class="top-nav-login-compact">Sign in</span>
+          </button>
+          <a href="../where-work-lives/" class="top-nav-cta top-nav-continue" aria-label="Continue to lesson 4">
+            <span class="top-nav-cta-label top-nav-cta-label-full">Next Lesson</span>
+            <span class="top-nav-cta-label top-nav-cta-label-compact">Next</span>
+            <span class="top-nav-cta-meta" id="progressText">0% complete</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" class="subpage-main">
+      <div class="page-container lesson-page">
+        <nav class="lesson-breadcrumb" aria-label="Breadcrumb">
+          <a href="../../">Course</a>
+          <span>/</span>
+          <strong>Lesson 3</strong>
+        </nav>
+
+        <section class="lesson-hero">
+          <p class="section-kicker">Lesson 3</p>
+          <h1>Practice the routing reflex.</h1>
+          <p>The goal is not memorizing every helper. The goal is recognizing the kind of work and asking for proof.</p>
+        </section>
+
+        <section class="landing-section lesson-module" id="lab" aria-labelledby="lab-title">
+          <h2 class="landing-section-title" id="lab-title">Practice the routing reflex</h2>
+          <div class="quiz-section">
+            <div class="quiz-section-header">
+              <h2>Helper routing quiz</h2>
+              <p>Choose the best lane for each scenario.</p>
+            </div>
+            <div class="quiz" id="quiz"></div>
+            <div class="quiz-result" id="score">Answer the scenarios to get your score.</div>
+          </div>
+          <div class="section-mark-complete">
+            <button class="btn btn-secondary complete-btn" type="button" data-complete="lab">Mark lesson 3 complete</button>
+          </div>
+        </section>
+
+        <nav class="lesson-next-links" aria-label="Lesson navigation">
+          <a class="btn btn-secondary" href="../write-starter-prompt/">Back: Write the starter prompt</a>
+          <a class="btn btn-primary" href="../where-work-lives/">Next: Know where the work lives</a>
+        </nav>
+
+        <footer class="footer course-footer">
+          <div class="footer-credit">
+            <p class="footer-byline">Created by Daniel Green</p>
+            <nav class="footer-social-links" aria-label="Daniel Green social links">
+              <a href="https://x.com/dgrreen" target="_blank" rel="me noopener">X</a>
+              <a href="https://www.linkedin.com/in/danielpgreen" target="_blank" rel="me noopener">LinkedIn</a>
+            </nav>
+            <button class="theme-toggle footer-theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode">
+              <span class="theme-toggle-sun" aria-hidden="true">Light</span>
+              <span class="theme-toggle-moon" aria-hidden="true">Dark</span>
+            </button>
+          </div>
+        </footer>
+      </div>
+    </main>
+
+    <script src="../../script.js"></script>
+    <script src="../../connect.js" defer></script>
+  </body>
+</html>
