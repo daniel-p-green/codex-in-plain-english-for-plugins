@@ -1,15 +1,54 @@
 (() => {
-  const bridgeInput = document.querySelector("#bridge-url");
-  const statusPill = document.querySelector("#connect-status");
-  const message = document.querySelector("#connect-message");
-  const result = document.querySelector("#connect-result");
-  const checkButton = document.querySelector("#connect-check");
-  const connectButton = document.querySelector("#connect-start");
-  const deviceButton = document.querySelector("#connect-device");
-  const copyFallbackButton = document.querySelector("#copy-fallback");
-  const fallbackPrompt = document.querySelector(".connect-fallback pre");
+  const BRIDGE_URL = "http://127.0.0.1:8789";
+  const openButtons = [...document.querySelectorAll("[data-login-open]")];
+  const shouldOpen = new URLSearchParams(window.location.search).get("login") === "chatgpt";
 
-  if (!bridgeInput || !statusPill || !message || !result) return;
+  if (openButtons.length === 0 && !shouldOpen) return;
+
+  const modal = document.createElement("div");
+  modal.className = "login-modal";
+  modal.hidden = true;
+  modal.innerHTML = `
+    <div class="login-modal-backdrop" data-login-close></div>
+    <section class="login-dialog" role="dialog" aria-modal="true" aria-labelledby="login-title">
+      <header class="login-dialog-header">
+        <div>
+          <p class="section-kicker">ChatGPT sign-in</p>
+          <h2 id="login-title">Sign in to use AI</h2>
+        </div>
+        <button class="login-close" type="button" aria-label="Close login" data-login-close>×</button>
+      </header>
+
+      <p class="login-copy">
+        Use your ChatGPT account for AI features. No API key required.
+      </p>
+
+      <div class="login-status-row">
+        <span class="connect-status" id="connect-status" data-state="idle">Not signed in</span>
+        <span class="connect-message" id="connect-message" aria-live="polite">Choose a sign-in option to continue.</span>
+      </div>
+
+      <div class="connect-actions" aria-label="ChatGPT login actions">
+        <button class="connect-button connect-button-primary" id="connect-start" type="button">
+          Continue with ChatGPT
+        </button>
+        <button class="connect-button connect-button-secondary" id="connect-device" type="button">
+          Use a code
+        </button>
+      </div>
+
+      <div class="connect-result" id="connect-result" hidden></div>
+    </section>
+  `;
+
+  document.body.append(modal);
+
+  const statusPill = modal.querySelector("#connect-status");
+  const message = modal.querySelector("#connect-message");
+  const result = modal.querySelector("#connect-result");
+  const connectButton = modal.querySelector("#connect-start");
+  const deviceButton = modal.querySelector("#connect-device");
+  const closeButtons = [...modal.querySelectorAll("[data-login-close]")];
 
   const setStatus = (state, text, detail = "") => {
     statusPill.dataset.state = state;
@@ -18,8 +57,8 @@
   };
 
   const setBusy = (isBusy) => {
-    [checkButton, connectButton, deviceButton].forEach((button) => {
-      if (button) button.disabled = isBusy;
+    [connectButton, deviceButton].forEach((button) => {
+      button.disabled = isBusy;
     });
   };
 
@@ -39,74 +78,57 @@
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;");
 
-  const getBridgeUrl = () => {
-    const raw = bridgeInput.value.trim();
-    let url;
-
-    try {
-      url = new URL(raw);
-    } catch {
-      throw new Error("Use a local helper address, like http://127.0.0.1:8789.");
-    }
-
-    const localHost = url.hostname === "127.0.0.1" || url.hostname === "localhost";
-    if (url.protocol !== "http:" || !localHost) {
-      throw new Error("For safety, this page only talks to a localhost sign-in helper.");
-    }
-
-    url.pathname = url.pathname.replace(/\/$/, "");
-    return url.toString().replace(/\/$/, "");
-  };
-
   const callBridge = async (path, options = {}) => {
-    const bridgeUrl = getBridgeUrl();
-    const response = await window.fetch(`${bridgeUrl}${path}`, {
-      ...options,
-      headers: {
-        "content-type": "application/json",
-        ...(options.headers || {}),
-      },
-    });
+    const controller = new AbortController();
+    const timeout = window.setTimeout(() => controller.abort(), 6000);
 
-    let body = null;
     try {
-      body = await response.json();
-    } catch {
-      body = null;
-    }
+      const response = await window.fetch(`${BRIDGE_URL}${path}`, {
+        ...options,
+        signal: controller.signal,
+        headers: {
+          "content-type": "application/json",
+          ...(options.headers || {}),
+        },
+      });
 
-    if (!response.ok || body?.ok === false) {
-      throw new Error(body?.message || "The local sign-in helper did not answer.");
-    }
+      let body = null;
+      try {
+        body = await response.json();
+      } catch {
+        body = null;
+      }
 
-    return body;
+      if (!response.ok || body?.ok === false) {
+        throw new Error("This browser could not start ChatGPT sign-in.");
+      }
+
+      return body;
+    } catch (error) {
+      if (error.name === "AbortError") {
+        throw new Error("This browser could not start ChatGPT sign-in.");
+      }
+      throw new Error("This browser could not start ChatGPT sign-in.");
+    } finally {
+      window.clearTimeout(timeout);
+    }
   };
 
-  const checkConnection = async () => {
-    clearResult();
-    setBusy(true);
-    setStatus("checking", "Checking", "Looking for the local sign-in helper...");
+  const openModal = () => {
+    modal.hidden = false;
+    document.body.classList.add("login-modal-open");
+    connectButton.focus();
+  };
 
-    try {
-      const body = await callBridge("/account");
-      if (body.accountType === "chatgpt") {
-        setStatus("ready", "Ready", "Codex is already signed in with ChatGPT.");
-        showResult("<p><strong>Ready.</strong> Pick a helper and ask Codex to try one harmless test.</p>");
-      } else {
-        setStatus("available", "Helper found", "Start ChatGPT sign-in next.");
-      }
-    } catch (error) {
-      setStatus("offline", "Not connected", error.message);
-      showResult("<p>Start the Codex sign-in helper, then try again. This page never stores your login.</p>");
-    } finally {
-      setBusy(false);
-    }
+  const closeModal = () => {
+    modal.hidden = true;
+    document.body.classList.remove("login-modal-open");
   };
 
   const startLogin = async (mode) => {
     clearResult();
     setBusy(true);
-    setStatus("checking", "Starting", "Asking Codex to start ChatGPT sign-in...");
+    setStatus("checking", "Starting", "Starting ChatGPT sign-in...");
 
     try {
       const body = await callBridge("/login", {
@@ -115,44 +137,52 @@
       });
 
       if (body.type === "chatgpt" && body.authUrl) {
-        const authUrl = escapeHtml(body.authUrl);
-        setStatus("available", "Sign in", "Open the ChatGPT sign-in link, then return here.");
+        setStatus("available", "Continue", "Open ChatGPT, then return here.");
         showResult(`
-          <a class="connect-result-link" href="${authUrl}" target="_blank" rel="noopener">
-            Open ChatGPT sign-in
+          <a class="connect-result-link" href="${escapeHtml(body.authUrl)}" target="_blank" rel="noopener">
+            Open ChatGPT
           </a>
-          <p>After sign-in, Codex will remember the account.</p>
+          <p>Return to this course after signing in.</p>
         `);
       } else if (body.type === "chatgptDeviceCode") {
-        const verificationUrl = escapeHtml(body.verificationUrl);
-        const userCode = escapeHtml(body.userCode);
         setStatus("available", "Use code", "Open the link and enter the code.");
         showResult(`
-          <a class="connect-result-link" href="${verificationUrl}" target="_blank" rel="noopener">
+          <a class="connect-result-link" href="${escapeHtml(body.verificationUrl)}" target="_blank" rel="noopener">
             Open code page
           </a>
-          <p class="connect-code">${userCode}</p>
+          <p class="connect-code">${escapeHtml(body.userCode)}</p>
+          <p>Enter this code on the ChatGPT page.</p>
         `);
       } else {
-        setStatus("ready", "Ready", "Codex says the account is already ready.");
+        setStatus("ready", "Signed in", "ChatGPT is connected.");
       }
     } catch (error) {
-      setStatus("offline", "Not connected", error.message);
-      showResult("<p>Start the Codex sign-in helper, then try again.</p>");
+      setStatus("offline", "Unavailable", error.message);
+      showResult("<p>Open this course in Codex, then try again.</p>");
     } finally {
       setBusy(false);
     }
   };
 
-  checkButton?.addEventListener("click", checkConnection);
-  connectButton?.addEventListener("click", () => startLogin("browser"));
-  deviceButton?.addEventListener("click", () => startLogin("code"));
-  copyFallbackButton?.addEventListener("click", async () => {
-    if (!fallbackPrompt) return;
-    await navigator.clipboard.writeText(fallbackPrompt.textContent.trim());
-    copyFallbackButton.textContent = "Copied";
-    window.setTimeout(() => {
-      copyFallbackButton.textContent = "Copy prompt";
-    }, 1600);
+  window.CodexLogin = { open: openModal, close: closeModal };
+
+  openButtons.forEach((button) => button.addEventListener("click", openModal));
+  document.addEventListener("click", (event) => {
+    const trigger = event.target.closest("[data-login-open]");
+    if (!trigger) return;
+    event.preventDefault();
+    openModal();
   });
+  closeButtons.forEach((button) => button.addEventListener("click", closeModal));
+  connectButton.addEventListener("click", () => startLogin("browser"));
+  deviceButton.addEventListener("click", () => startLogin("code"));
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !modal.hidden) closeModal();
+  });
+
+  if (shouldOpen) {
+    window.history.replaceState({}, "", window.location.pathname);
+    openModal();
+  }
 })();

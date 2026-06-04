@@ -101,10 +101,10 @@ if (!helper) {
         <h3>Find another helper</h3>
         <p>Go back to the directory when the work lives somewhere else.</p>
       </a>
-      <a class="starter-card starter-card-secondary" href="../../chatgpt/">
-        <p class="starter-card-kicker">Sign-in truth</p>
-        <h3>Connect with ChatGPT</h3>
-        <p>Understand what this website can and cannot do for login.</p>
+      <a class="starter-card starter-card-secondary" href="../../">
+        <p class="starter-card-kicker">Course</p>
+        <h3>Practice the loop</h3>
+        <p>Go back to the course when you want to practice routing a real task.</p>
       </a>
     </section>
   `;

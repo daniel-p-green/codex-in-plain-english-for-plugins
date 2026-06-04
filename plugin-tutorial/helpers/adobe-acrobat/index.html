@@ -20,9 +20,12 @@
         <nav class="top-nav-links" aria-label="Primary">
           <a class="top-nav-link" href="../../">Home</a>
           <a class="top-nav-link active" href="../">Helpers</a>
-          <a class="top-nav-link" href="../../chatgpt/">Connect</a>
         </nav>
         <div class="top-nav-actions">
+          <button class="top-nav-login" type="button" data-login-open aria-label="Sign in with ChatGPT">
+            <span class="top-nav-login-full">Sign in</span>
+            <span class="top-nav-login-compact">Sign in</span>
+          </button>
           <a href="../" class="top-nav-cta">Helper map</a>
         </div>
       </div>
@@ -30,6 +33,14 @@
     <main id="main" class="subpage-main">
       <div class="page-container helper-page" id="helperDetail"></div>
     </main>
+    <footer class="footer course-footer subpage-footer">
+      <p class="footer-byline">Created by Daniel Green.</p>
+      <nav class="footer-social-links" aria-label="Daniel Green social links">
+        <a href="https://x.com/dgrreen" target="_blank" rel="me noopener">X</a>
+        <a href="https://www.linkedin.com/in/danielpgreen" target="_blank" rel="me noopener">LinkedIn</a>
+      </nav>
+    </footer>
     <script type="module" src="../../helper-detail.js"></script>
+    <script src="../../connect.js" defer></script>
   </body>
 </html>

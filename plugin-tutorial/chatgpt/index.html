@@ -3,134 +3,17 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="Connect with ChatGPT through a local Codex app-server for Codex in Plain English for Plugins."
-    />
-    <title>Connect With ChatGPT | Codex in Plain English for Plugins</title>
+    <meta name="robots" content="noindex" />
+    <title>Sign in | Codex in Plain English for Plugins</title>
     <link rel="icon" href="../favicon-trex.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="../styles.css" />
+    <script>
+      window.location.replace("../?login=chatgpt");
+    </script>
   </head>
   <body>
-    <a class="skip-link" href="#main">Skip to main content</a>
-    <header class="top-nav subpage-nav">
-      <div class="top-nav-inner">
-        <a href="../" class="top-nav-brand" aria-label="Codex in Plain English for Plugins">
-          <span class="top-nav-brand-dex" aria-hidden="true">🦖</span>
-          <span class="top-nav-brand-text top-nav-brand-text-full" aria-hidden="true">
-            Codex in Plain English
-          </span>
-          <span class="top-nav-brand-text top-nav-brand-text-compact" aria-hidden="true">
-            Plugins
-          </span>
-        </a>
-
-        <nav class="top-nav-links" aria-label="Primary">
-          <a class="top-nav-link" href="../">Home</a>
-          <a class="top-nav-link" href="../helpers/">Helpers</a>
-          <a class="top-nav-link active" href="./">Connect</a>
-        </nav>
-
-        <div class="top-nav-actions">
-          <a href="../helpers/" class="top-nav-cta">Helper map</a>
-        </div>
-      </div>
-    </header>
-
-    <main id="main" class="subpage-main">
-      <div class="page-container connect-page">
-        <section class="helper-detail-hero connect-hero">
-          <div class="hero-dex" aria-hidden="true">🦖</div>
-          <p class="section-kicker">ChatGPT sign-in</p>
-          <h1>Connect with ChatGPT</h1>
-          <p>
-            Use this when a Codex sign-in helper is running on your machine.
-            Codex keeps the login. This course only starts the sign-in.
-          </p>
-        </section>
-
-        <section class="connect-login-shell" aria-labelledby="connect-login-title">
-          <article class="connect-login-card">
-            <div class="connect-login-card-head">
-              <span class="connect-status" id="connect-status" data-state="idle">Not checked</span>
-              <div>
-                <p class="section-kicker">Login option</p>
-                <h2 id="connect-login-title">ChatGPT through Codex</h2>
-              </div>
-            </div>
-
-            <p class="connect-login-copy">
-              Try the connection first. If Codex is reachable, start ChatGPT sign-in here.
-            </p>
-
-            <div class="connect-actions" aria-label="ChatGPT login actions">
-              <button class="connect-button connect-button-secondary" id="connect-check" type="button">
-                Check Codex
-              </button>
-              <button class="connect-button connect-button-primary" id="connect-start" type="button">
-                Connect with ChatGPT
-              </button>
-              <button class="connect-button connect-button-secondary" id="connect-device" type="button">
-                Use a code
-              </button>
-            </div>
-
-            <p class="connect-message" id="connect-message" aria-live="polite">
-              Codex has not been checked yet.
-            </p>
-
-            <div class="connect-result" id="connect-result" hidden></div>
-
-            <details class="connect-advanced">
-              <summary>Local sign-in helper</summary>
-              <label for="bridge-url">Helper address</label>
-              <input id="bridge-url" type="url" value="http://127.0.0.1:8789" />
-              <p>Keep this on your own machine. The helper talks to Codex app-server for you.</p>
-            </details>
-          </article>
-
-          <aside class="connect-steps" aria-label="How connection works">
-            <h2>What should happen</h2>
-            <ol>
-              <li>Codex or a Codex harness is running.</li>
-              <li>You press <strong>Connect with ChatGPT</strong>.</li>
-              <li>ChatGPT opens a sign-in page.</li>
-              <li>Codex remembers the login for future work.</li>
-            </ol>
-          </aside>
-        </section>
-
-        <section class="connect-fallback" aria-labelledby="fallback-title">
-          <div>
-            <p class="section-kicker">If the button does not work</p>
-            <h2 id="fallback-title">Ask Codex to check it</h2>
-          </div>
-          <pre>Check whether ChatGPT login and the helper for this task are ready.
-Tell me:
-1. Whether Codex is signed in with ChatGPT.
-2. Which helper you would use.
-3. One tiny harmless test you can run.
-4. What you will not do without asking me first.</pre>
-          <button class="connect-button connect-button-secondary" id="copy-fallback" type="button">
-            Copy prompt
-          </button>
-        </section>
-
-        <section class="helper-next-links" aria-label="Next steps">
-          <a class="starter-card starter-card-secondary" href="../helpers/">
-            <p class="starter-card-kicker">Helper map</p>
-            <h3>Pick the right helper</h3>
-            <p>Find the guide that matches the job you are trying to finish.</p>
-          </a>
-          <a class="starter-card starter-card-secondary" href="../">
-            <p class="starter-card-kicker">Course</p>
-            <h3>Practice the loop</h3>
-            <p>Ask, inspect, revise, and verify before trusting the result.</p>
-          </a>
-        </section>
-      </div>
-    </main>
-
-    <script src="../connect.js" defer></script>
+    <p>
+      Opening sign-in.
+      <a href="../?login=chatgpt">Continue</a>
+    </p>
   </body>
 </html>

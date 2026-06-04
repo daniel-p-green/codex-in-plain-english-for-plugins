@@ -34,7 +34,6 @@
             <a class="top-nav-link active" href="#overview">Home</a>
             <a class="top-nav-link" href="#router">Lessons</a>
             <a class="top-nav-link" href="./helpers/">Helpers</a>
-            <a class="top-nav-link" href="./chatgpt/">Connect</a>
             <a class="top-nav-link" href="#lab">Practice</a>
           </nav>
 
@@ -53,6 +52,10 @@
                 <span class="top-nav-chip-label">Course</span>
               </span>
             </div>
+            <button class="top-nav-login" type="button" data-login-open aria-label="Sign in with ChatGPT">
+              <span class="top-nav-login-full">Sign in</span>
+              <span class="top-nav-login-compact">Sign in</span>
+            </button>
             <a href="#router" class="top-nav-cta top-nav-continue" aria-label="Continue Codex in Plain English for Plugins">
               <span class="top-nav-cta-label top-nav-cta-label-full">Continue Course</span>
               <span class="top-nav-cta-label top-nav-cta-label-compact">Continue</span>
@@ -165,14 +168,6 @@
               <p class="landing-hero-note">For normal people doing real work, not model-company employees or developers.</p>
             </section>
 
-            <section class="server-notice" id="serverNotice" hidden>
-              <div>
-                <h2>Opening this from a file?</h2>
-                <p>The public version is easier to use and stays updated after each merge.</p>
-              </div>
-              <a class="btn btn-secondary" href="https://daniel-p-green.github.io/codex-in-plain-english-for-plugins/">Open the web version</a>
-            </section>
-
             <section class="course-clarity" aria-labelledby="course-clarity-title">
               <h2 id="course-clarity-title">Who this is for</h2>
               <ol>
@@ -259,10 +254,6 @@
                   <span>Plain English: “Follow the good way to do this.”</span>
                 </article>
               </div>
-              <div class="auth-truth-note">
-                <strong>Connect option:</strong>
-                <span>Use the ChatGPT connection page when Codex or a Codex harness is running on your machine. Then ask Codex to verify the helper with one harmless test.</span>
-              </div>
             </section>
 
             <section class="landing-section" aria-labelledby="start-title">
@@ -282,11 +273,6 @@
                   <p class="starter-card-kicker">Helper Map</p>
                   <h3>Look up the right helper</h3>
                   <p>Use this when you know Codex can probably help, but you do not know which helper fits.</p>
-                </a>
-                <a class="starter-card starter-card-secondary" href="./chatgpt/">
-                  <p class="starter-card-kicker">Connect</p>
-                  <h3>Connect with ChatGPT</h3>
-                  <p>Use Codex app-server login when a local Codex client or harness is available.</p>
                 </a>
               </div>
             </section>
@@ -473,10 +459,10 @@
                   <strong>Slack guide</strong>
                   <p>See what a dedicated helper page looks like.</p>
                 </a>
-                <a class="helper-teaser" href="./chatgpt/">
-                  <span>Connect</span>
-                  <strong>Sign-in truth</strong>
-                  <p>Understand what the course can teach and what must happen inside ChatGPT or Codex.</p>
+                <a class="helper-teaser" href="./helpers/gmail/">
+                  <span>Example</span>
+                  <strong>Gmail guide</strong>
+                  <p>See how a connector helper fits ordinary inbox and follow-up work.</p>
                 </a>
               </div>
             </section>
@@ -579,11 +565,24 @@
                 <a href="#overview">Back to top</a>
               </div>
             </section>
+
+            <footer class="footer course-footer">
+              <p class="footer-byline">Created by Daniel Green.</p>
+              <nav class="footer-social-links" aria-label="Daniel Green social links">
+                <a href="https://x.com/dgrreen" target="_blank" rel="me noopener">X</a>
+                <a href="https://www.linkedin.com/in/danielpgreen" target="_blank" rel="me noopener">LinkedIn</a>
+              </nav>
+              <p class="footer-file-notice" id="serverNotice" hidden>
+                Opening this from a file?
+                <a href="https://daniel-p-green.github.io/codex-in-plain-english-for-plugins/">Open the web version.</a>
+              </p>
+            </footer>
           </div>
         </main>
       </div>
     </div>
 
     <script src="./script.js"></script>
+    <script src="./connect.js" defer></script>
   </body>
 </html>

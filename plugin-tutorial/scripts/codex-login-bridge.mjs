@@ -21,6 +21,7 @@ const json = (res, status, body, origin) => {
     res.setHeader("Access-Control-Allow-Origin", origin);
     res.setHeader("Access-Control-Allow-Headers", "content-type");
     res.setHeader("Access-Control-Allow-Methods", "GET,POST,OPTIONS");
+    res.setHeader("Access-Control-Allow-Private-Network", "true");
   }
 
   res.writeHead(status, { "Content-Type": "application/json" });

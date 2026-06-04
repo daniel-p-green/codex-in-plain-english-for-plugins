@@ -35,7 +35,7 @@ cd plugin-tutorial
 node scripts/codex-login-bridge.mjs
 ```
 
-Then open the Connect page and press `Check Codex` or `Connect with ChatGPT`.
+Then press `Sign in` in the site header.
 
 ## Course Shape
 
@@ -45,7 +45,7 @@ Then open the Connect page and press `Check Codex` or `Connect with ChatGPT`.
 - Module 3: Routing practice quiz
 - Module 4: Where the work lives
 - Helper map: Searchable directory plus one page per helper
-- Connect: Plain-English sign-in truth for ChatGPT/Codex vs this public website
+- Header login: ChatGPT login option for local Codex harnesses without API keys
 - Finish: Setup and verification checklist
 
 ## Teaching Notes

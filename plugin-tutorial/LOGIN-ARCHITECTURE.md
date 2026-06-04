@@ -13,11 +13,11 @@ It should not pretend to log visitors into ChatGPT, Codex, or any helper. That i
 
 ## Current Product Decision
 
-Keep login language educational:
+Keep login as product chrome, not course content:
 
-> This public course does not log you in by itself. Ask Codex to check whether the helper is signed in and ready.
+> Sign in.
 
-Do not add a fake "Sign in with ChatGPT" button to the static course. The visible course option should call a real local sign-in helper, and that helper should talk to Codex app-server. If the project later becomes a real ChatGPT app, build and verify that as a separate app/server lane.
+The visible course option is a header button that opens a small modal. The modal calls a real local sign-in helper, and that helper talks to Codex app-server. If the project later becomes a real ChatGPT app, build and verify that as a separate app/server lane.
 
 ## Verified Codex App-Server Nuance
 
