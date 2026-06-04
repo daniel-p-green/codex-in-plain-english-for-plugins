@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="A plain-English map of Codex helpers: what each one is for, how to start, and what proof to ask for."
+    />
+    <title>Helper Map | Codex in Plain English for Plugins</title>
+    <link rel="icon" href="../favicon-trex.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+    <header class="top-nav subpage-nav">
+      <div class="top-nav-inner">
+        <a href="../" class="top-nav-brand" aria-label="Codex in Plain English for Plugins">
+          <span class="top-nav-brand-dex" aria-hidden="true">🦖</span>
+          <span class="top-nav-brand-text top-nav-brand-text-full" aria-hidden="true">
+            Codex in Plain English
+          </span>
+          <span class="top-nav-brand-text top-nav-brand-text-compact" aria-hidden="true">
+            Plugins
+          </span>
+        </a>
+
+        <nav class="top-nav-links" aria-label="Primary">
+          <a class="top-nav-link" href="../">Home</a>
+          <a class="top-nav-link active" href="./">Helpers</a>
+          <a class="top-nav-link" href="../chatgpt/">Connect</a>
+        </nav>
+
+        <div class="top-nav-actions">
+          <a href="../#router" class="top-nav-cta">Start course</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" class="subpage-main">
+      <div class="page-container helper-directory-page">
+        <section class="helper-directory-hero">
+          <div class="hero-dex" aria-hidden="true">🦖</div>
+          <p class="section-kicker">Helper map</p>
+          <h1>Find the helper by the job, not by the technical name.</h1>
+          <p>
+            Search for ordinary work like follow-up, spreadsheet, flyer, website, meeting,
+            trip, deck, or safety. Each helper has its own plain-English guide.
+          </p>
+          <div class="helper-search-row">
+            <label for="helperSearch">Search helpers</label>
+            <input id="helperSearch" type="search" placeholder="Try: meeting, PDF, social post, chart, home, Slack" />
+            <span><strong id="helperCount">0</strong> helpers mapped</span>
+          </div>
+        </section>
+
+        <section class="helper-directory-principle" aria-label="Simple rule">
+          <strong>Simple rule:</strong>
+          <span>
+            If the work lives in another app, account, file, meeting, website, or service,
+            there may be a helper for it. If the work is just text in this chat, ask Codex normally.
+          </span>
+        </section>
+
+        <div class="helper-directory-stack" id="helperGroups"></div>
+      </div>
+    </main>
+
+    <script type="module" src="../helpers-page.js"></script>
+  </body>
+</html>

@@ -1,4 +1,4 @@
-const moduleIds = ["router", "prompts", "lab", "stack", "directory"];
+const moduleIds = ["router", "prompts", "lab", "stack"];
 const completed = new Set(JSON.parse(localStorage.getItem("pluginCourseCompleted") || "[]"));
 const answeredQuiz = new Set();
 let selectedScenarioId = localStorage.getItem("pluginCourseSelectedScenario") || "";
@@ -228,11 +228,11 @@ const checklistItems = [
   },
   {
     title: "Write boundary",
-    text: "Confirm whether the plugin can draft only, edit local artifacts, or perform external actions."
+    text: "Confirm whether the helper can draft only, edit local artifacts, or perform external actions."
   },
   {
     title: "Privacy rule",
-    text: "Decide whether this plugin is safe for demos or should stay off in public screenshares."
+    text: "Decide whether this helper is safe for demos or should stay off in public screenshares."
   },
   {
     title: "Done signal",
@@ -399,16 +399,16 @@ function renderPluginDirectory() {
     <article class="plugin-directory-group">
       <div class="plugin-directory-group-head">
         <h3>${group.title}</h3>
-        <span>${group.plugins.length} plugins</span>
+        <span>${group.plugins.length} helpers</span>
       </div>
       <p>${group.job}</p>
       <div class="plugin-proof"><strong>Proof:</strong> ${group.proof}</div>
       <div class="plugin-list">
         ${group.plugins.map(([name, description]) => `
-          <div class="plugin-list-item">
+          <a class="plugin-list-item" href="./helpers/${name.toLowerCase().replace(/&/g, " and ").replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "")}/">
             <strong>${name}</strong>
             <span>${description}</span>
-          </div>
+          </a>
         `).join("")}
       </div>
     </article>
@@ -571,6 +571,44 @@ function wireActiveNav() {
   sections.forEach((section) => observer.observe(section));
 }
 
+function wireMobileMenu() {
+  const button = document.querySelector(".top-nav-menu");
+  const sidebarNav = document.querySelector(".left-sidebar-nav");
+  if (!button || !sidebarNav) return;
+
+  const drawer = document.createElement("div");
+  drawer.className = "mobile-drawer";
+  drawer.innerHTML = `
+    <div class="mobile-drawer-backdrop" data-drawer-close></div>
+    <div class="mobile-drawer-panel" role="dialog" aria-modal="true" aria-label="Course navigation">
+      <div class="mobile-drawer-header">
+        <h2>Course map</h2>
+        <button class="mobile-drawer-close" type="button" aria-label="Close navigation" data-drawer-close>&times;</button>
+      </div>
+      <div class="mobile-drawer-content"></div>
+    </div>
+  `;
+  drawer.querySelector(".mobile-drawer-content").append(sidebarNav.cloneNode(true));
+  document.body.append(drawer);
+
+  const setOpen = (isOpen) => {
+    drawer.classList.toggle("open", isOpen);
+    button.setAttribute("aria-expanded", String(isOpen));
+    document.body.style.overflow = isOpen ? "hidden" : "";
+  };
+
+  button.setAttribute("aria-expanded", "false");
+  button.addEventListener("click", () => setOpen(true));
+  drawer.addEventListener("click", (event) => {
+    if (event.target.closest("[data-drawer-close]") || event.target.closest("a")) {
+      setOpen(false);
+    }
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") setOpen(false);
+  });
+}
+
 document.getElementById("promptForm").addEventListener("submit", (event) => {
   event.preventDefault();
   buildPrompt({ measure: true });
@@ -594,5 +632,6 @@ renderChecklist();
 wireCompletion();
 wireMeasurementReset();
 wireActiveNav();
+wireMobileMenu();
 buildPrompt({ measure: false });
 saveProgress();

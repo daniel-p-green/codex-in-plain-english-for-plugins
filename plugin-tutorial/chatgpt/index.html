@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Plain-English explanation of what ChatGPT login means for the Codex in Plain English for Plugins course."
+    />
+    <title>Connect With ChatGPT | Codex in Plain English for Plugins</title>
+    <link rel="icon" href="../favicon-trex.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+    <header class="top-nav subpage-nav">
+      <div class="top-nav-inner">
+        <a href="../" class="top-nav-brand" aria-label="Codex in Plain English for Plugins">
+          <span class="top-nav-brand-dex" aria-hidden="true">🦖</span>
+          <span class="top-nav-brand-text top-nav-brand-text-full" aria-hidden="true">
+            Codex in Plain English
+          </span>
+          <span class="top-nav-brand-text top-nav-brand-text-compact" aria-hidden="true">
+            Plugins
+          </span>
+        </a>
+
+        <nav class="top-nav-links" aria-label="Primary">
+          <a class="top-nav-link" href="../">Home</a>
+          <a class="top-nav-link" href="../helpers/">Helpers</a>
+          <a class="top-nav-link active" href="./">Connect</a>
+        </nav>
+
+        <div class="top-nav-actions">
+          <a href="../helpers/" class="top-nav-cta">Helper map</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" class="subpage-main">
+      <div class="page-container connect-page">
+        <section class="helper-detail-hero connect-hero">
+          <div class="hero-dex" aria-hidden="true">🦖</div>
+          <p class="section-kicker">ChatGPT sign-in, in plain English</p>
+          <h1>This public course does not log you in by itself.</h1>
+          <p>
+            There is a Codex app-server lane that can start ChatGPT login for a
+            Codex client or harness. This page is different: it is a public
+            GitHub Pages course. It teaches the pattern, then sends real account
+            work back to Codex, ChatGPT, or a proper app/server.
+          </p>
+        </section>
+
+        <section class="connect-truth-grid" aria-label="What each surface can do">
+          <article class="helper-detail-panel helper-detail-panel-large">
+            <span>Public website</span>
+            <h2>No account access</h2>
+            <p>Good for learning the pattern, choosing a helper, and copying starter prompts.</p>
+          </article>
+          <article class="helper-detail-panel">
+            <span>Codex app-server</span>
+            <h2>Can start ChatGPT login</h2>
+            <p>Good for a Codex client or harness. It can hand the client a sign-in link or device-code flow.</p>
+          </article>
+          <article class="helper-detail-panel">
+            <span>GitHub Pages boundary</span>
+            <h2>Cannot run that server</h2>
+            <p>A static page cannot safely own OAuth callbacks, secrets, tokens, or sessions by itself.</p>
+          </article>
+          <article class="helper-detail-panel">
+            <span>Real app lane</span>
+            <h2>Separate product work</h2>
+            <p>If this becomes a real app, build the server, permission flow, and safety checks as their own surface.</p>
+          </article>
+        </section>
+
+        <section class="auth-truth-note connect-local-note" aria-label="App server note">
+          <strong>The important distinction:</strong>
+          <span>
+            You were right: one Codex app-server path can log in with ChatGPT.
+            The plain-English course should still avoid a fake login button, because
+            a public static page is not the app-server and should not pretend to be.
+          </span>
+        </section>
+
+        <section class="helper-prompt-block" aria-labelledby="connect-prompt-title">
+          <div>
+            <p class="section-kicker">Try this in Codex</p>
+            <h2 id="connect-prompt-title">Plain-English readiness check</h2>
+          </div>
+          <pre>Check whether the helper for this task is ready. Tell me:
+1. Which helper you would use.
+2. Whether it appears signed in.
+3. One tiny harmless test you can run.
+4. What you cannot access.
+5. What you will not do without asking me first.</pre>
+        </section>
+
+        <section class="proof-table-wrapper helper-proof-block" aria-labelledby="connect-table-title">
+          <h2 id="connect-table-title">What “logged in” actually means</h2>
+          <table class="content-table">
+            <thead>
+              <tr>
+                <th>Phrase</th>
+                <th>Plain English</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label="Phrase">Installed</td>
+                <td data-label="Plain English">Codex knows the helper exists.</td>
+              </tr>
+              <tr>
+                <td data-label="Phrase">Signed in</td>
+                <td data-label="Plain English">Codex can reach the right account or service.</td>
+              </tr>
+              <tr>
+                <td data-label="Phrase">ChatGPT login</td>
+                <td data-label="Plain English">A Codex client can ask the Codex app-server to start a ChatGPT sign-in flow.</td>
+              </tr>
+              <tr>
+                <td data-label="Phrase">Tried once</td>
+                <td data-label="Plain English">A harmless test proved the connection works.</td>
+              </tr>
+              <tr>
+                <td data-label="Phrase">Safe enough</td>
+                <td data-label="Plain English">You know whether Codex can read, draft, edit, send, publish, book, or buy.</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="helper-next-links" aria-label="Next steps">
+          <a class="starter-card starter-card-secondary" href="../helpers/">
+            <p class="starter-card-kicker">Helper map</p>
+            <h3>Pick the right helper</h3>
+            <p>Find the guide that matches the job you are trying to finish.</p>
+          </a>
+          <a class="starter-card starter-card-secondary" href="../">
+            <p class="starter-card-kicker">Course</p>
+            <h3>Practice the loop</h3>
+            <p>Ask, inspect, revise, and verify before trusting the result.</p>
+          </a>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>

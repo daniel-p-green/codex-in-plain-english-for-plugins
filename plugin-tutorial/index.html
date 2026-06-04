@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Codex in Plain English for Plugins: a course for choosing, prompting, and verifying Codex plugins."
+      content="Codex in Plain English for Plugins: a course for normal people who want Codex to help across their apps without memorizing plugin names."
     />
     <title>Codex in Plain English for Plugins</title>
     <link rel="icon" href="./favicon-trex.svg" type="image/svg+xml" />
@@ -20,7 +20,7 @@
             <span aria-hidden="true">☰</span>
           </button>
 
-          <a href="#overview" class="top-nav-brand" aria-label="Codex in Plain English for Plugins">
+          <a href="./" class="top-nav-brand" aria-label="Codex in Plain English for Plugins">
             <span class="top-nav-brand-dex" aria-hidden="true">🦖</span>
             <span class="top-nav-brand-text top-nav-brand-text-full" aria-hidden="true">
               Codex in Plain English
@@ -31,11 +31,11 @@
           </a>
 
           <nav class="top-nav-links" aria-label="Primary">
-            <a class="top-nav-link active" href="#overview">Overview</a>
-            <a class="top-nav-link" href="#router">Modules</a>
-            <a class="top-nav-link" href="#plugin-directory">Directory</a>
+            <a class="top-nav-link active" href="#overview">Home</a>
+            <a class="top-nav-link" href="#router">Lessons</a>
+            <a class="top-nav-link" href="./helpers/">Helpers</a>
+            <a class="top-nav-link" href="./chatgpt/">Connect</a>
             <a class="top-nav-link" href="#lab">Practice</a>
-            <a class="top-nav-link" href="#checklist">Progress</a>
           </nav>
 
           <div class="top-nav-actions">
@@ -69,7 +69,7 @@
             <span>Course map</span>
           </div>
 
-          <p class="left-sidebar-breadcrumb">Course › For Plugins</p>
+          <p class="left-sidebar-breadcrumb">Course › Helpers</p>
 
           <nav class="left-sidebar-nav" aria-label="Course sections">
             <section class="left-sidebar-group">
@@ -82,12 +82,12 @@
                 </li>
                 <li>
                   <a class="left-sidebar-link" href="#glossary" aria-label="Plain-English Glossary">
-                    <span class="left-sidebar-label">Plugin Glossary</span>
+                    <span class="left-sidebar-label">Helper Glossary</span>
                   </a>
                 </li>
                 <li>
-                  <a class="left-sidebar-link" href="#plugin-directory" aria-label="Plugin Directory">
-                    <span class="left-sidebar-label">Plugin Directory</span>
+                  <a class="left-sidebar-link" href="./helpers/" aria-label="Helper Directory">
+                    <span class="left-sidebar-label">Helper Directory</span>
                   </a>
                 </li>
               </ul>
@@ -97,10 +97,10 @@
               <h2>Core Course</h2>
               <ul>
                 <li>
-                  <a class="left-sidebar-link" href="#router" aria-label="Module 1: Choose the Right Plugin">
+                  <a class="left-sidebar-link" href="#router" aria-label="Module 1: Choose the Right Help">
                     <span class="left-sidebar-label left-sidebar-module-label">
                       <span class="left-sidebar-module-number">Module 1</span>
-                      <span class="left-sidebar-module-title">Choose the Right Plugin</span>
+                      <span class="left-sidebar-module-title">Choose the Right Help</span>
                     </span>
                   </a>
                 </li>
@@ -127,10 +127,10 @@
               <h2>Expanded Codex 2026</h2>
               <ul>
                 <li>
-                  <a class="left-sidebar-link" href="#stack" aria-label="Module 4: Know the Plugin Stack">
+                  <a class="left-sidebar-link" href="#stack" aria-label="Module 4: Know Where Work Lives">
                     <span class="left-sidebar-label left-sidebar-module-label">
                       <span class="left-sidebar-module-number">Module 4</span>
-                      <span class="left-sidebar-module-title">Know the Plugin Stack</span>
+                      <span class="left-sidebar-module-title">Know Where Work Lives</span>
                     </span>
                   </a>
                 </li>
@@ -162,22 +162,22 @@
                 <span class="hero-title-suffix">for Plugins</span>
               </h1>
               <p>Learn how to ask Codex for help across your apps without needing to know the technical names.</p>
-              <p class="landing-hero-note">For normal people doing real work, not plugin experts.</p>
+              <p class="landing-hero-note">For normal people doing real work, not model-company employees or developers.</p>
             </section>
 
             <section class="server-notice" id="serverNotice" hidden>
               <div>
-                <h2>Open this through the local app server</h2>
-                <p>This course works best at <code>http://localhost:8765/</code>. File URLs can make browser-state and login-style flows feel broken.</p>
+                <h2>Opening this from a file?</h2>
+                <p>The public version is easier to use and stays updated after each merge.</p>
               </div>
-              <code>cd plugin-tutorial && python3 -m http.server 8765</code>
+              <a class="btn btn-secondary" href="https://daniel-p-green.github.io/codex-in-plain-english-for-plugins/">Open the web version</a>
             </section>
 
             <section class="course-clarity" aria-labelledby="course-clarity-title">
               <h2 id="course-clarity-title">Who this is for</h2>
               <ol>
                 <li>
-                  <strong>You are trying to finish work, not learn plugin names</strong>
+                  <strong>You are trying to finish work, not learn tool names</strong>
                   <span>You might be planning an event, following up after meetings, writing a report, making a social post, checking a spreadsheet, or organizing files.</span>
                 </li>
                 <li>
@@ -212,7 +212,7 @@
               <div class="milestone-grid" id="milestoneGrid"></div>
             </section>
 
-            <section class="module-orientation plugin-readiness" aria-label="Plugin readiness model">
+            <section class="module-orientation plugin-readiness" aria-label="Helper readiness model">
               <div class="module-orientation-item">
                 <h2>Installed</h2>
                 <p>The helper exists in Codex. That does not mean it is ready to use.</p>
@@ -239,14 +239,14 @@
               </div>
               <div class="concept-grid">
                 <article>
-                  <h3>Plugin</h3>
-                  <p>A helper package Codex can use for a kind of work.</p>
+                  <h3>Helper</h3>
+                  <p>The learner-facing word for something Codex can use to help with a kind of work.</p>
                   <span>Plain English: “Use the right helper for this.”</span>
                 </article>
                 <article>
-                  <h3>Skill</h3>
-                  <p>A recipe that tells Codex how to do a task well.</p>
-                  <span>Plain English: “Follow the good way to do this.”</span>
+                  <h3>Plugin</h3>
+                  <p>The behind-the-scenes package that may include skills, tools, and connections.</p>
+                  <span>Plain English: “The kit behind the helper.”</span>
                 </article>
                 <article>
                   <h3>Connector</h3>
@@ -254,14 +254,14 @@
                   <span>Plain English: “Look in my email, calendar, files, or messages.”</span>
                 </article>
                 <article>
-                  <h3>Tool</h3>
-                  <p>An action Codex can take after it has the right helper.</p>
-                  <span>Plain English: “Search, open, compare, draft, chart, or check.”</span>
+                  <h3>Skill</h3>
+                  <p>A recipe that tells Codex how to do one task well.</p>
+                  <span>Plain English: “Follow the good way to do this.”</span>
                 </article>
               </div>
               <div class="auth-truth-note">
                 <strong>Login truth:</strong>
-                <span>This course is just a website. It does not log you into plugins. It teaches you how to ask Codex to check whether a plugin is signed in and ready.</span>
+                <span>This course is just a website. It does not log you into ChatGPT or any helper. It teaches you how to ask Codex to check whether a helper is signed in and ready.</span>
               </div>
             </section>
 
@@ -278,16 +278,21 @@
                   <h3>Know where the work lives</h3>
                   <p>See how Slack, Drive, Granola, GitHub, Figma, data, and creative tools fit together.</p>
                 </a>
-                <a class="starter-card starter-card-secondary" href="#plugin-directory">
-                  <p class="starter-card-kicker">Full Directory</p>
+                <a class="starter-card starter-card-secondary" href="./helpers/">
+                  <p class="starter-card-kicker">Helper Map</p>
                   <h3>Look up the right helper</h3>
-                  <p>Use this when you know there is probably a plugin, but you do not know which one.</p>
+                  <p>Use this when you know Codex can probably help, but you do not know which helper fits.</p>
+                </a>
+                <a class="starter-card starter-card-secondary" href="./chatgpt/">
+                  <p class="starter-card-kicker">Connect</p>
+                  <h3>Understand sign-in</h3>
+                  <p>Learn what this public course can do, and what must happen inside Codex or ChatGPT.</p>
                 </a>
               </div>
             </section>
 
             <section class="landing-section" id="router" aria-labelledby="router-title">
-              <h2 class="landing-section-title" id="router-title">Module 1: Choose the right plugin</h2>
+              <h2 class="landing-section-title" id="router-title">Module 1: Choose the right help</h2>
               <div class="module-header plugin-module-header">
                 <div class="module-header-meta">
                   <span class="badge">10 min</span>
@@ -297,7 +302,7 @@
                 <p>Pick the work you are trying to do. The answer should name the helper to try, why it fits, the first prompt, and the proof to ask for.</p>
               </div>
 
-              <div class="decision-tree" aria-label="Plugin decision tree">
+              <div class="decision-tree" aria-label="Helper decision tree">
                 <h3>Quick decision tree</h3>
                 <ol>
                   <li><strong>Is the work only in local files?</strong><span>Use normal Codex file work. No special helper needed yet.</span></li>
@@ -326,12 +331,12 @@
                 </div>
                 <div class="module-orientation-item">
                   <h2>Verification rule</h2>
-                  <p>Every plugin prompt should say what proof you expect before Codex calls the work done.</p>
+                  <p>Every helper prompt should say what proof you expect before Codex calls the work done.</p>
                 </div>
               </div>
 
               <div class="prompt-rubric" aria-label="Prompt quality rubric">
-                <h3>Strong plugin prompts include</h3>
+                <h3>Strong helper prompts include</h3>
                 <ul>
                   <li>Goal</li>
                   <li>Context source</li>
@@ -369,8 +374,8 @@
               <h2 class="landing-section-title" id="lab-title">Module 3: Practice the routing reflex</h2>
               <div class="quiz-section">
                 <div class="quiz-section-header">
-                  <h2>Plugin routing quiz</h2>
-                  <p>Choose the best lane. The goal is not memorizing every plugin. The goal is recognizing the kind of work.</p>
+                <h2>Helper routing quiz</h2>
+                  <p>Choose the best lane. The goal is not memorizing every helper. The goal is recognizing the kind of work.</p>
                 </div>
                 <div class="quiz" id="quiz"></div>
                 <div class="quiz-result" id="score">Answer the scenarios to get your score.</div>
@@ -381,7 +386,7 @@
             </section>
 
             <section class="landing-section" id="stack" aria-labelledby="stack-title">
-              <h2 class="landing-section-title" id="stack-title">Module 4: Know the plugin stack</h2>
+              <h2 class="landing-section-title" id="stack-title">Module 4: Know where the work lives</h2>
               <div class="landing-create-grid plugin-stack-grid">
                 <article class="create-card">
                   <h3>Daily context</h3>
@@ -390,7 +395,7 @@
                 </article>
                 <article class="create-card">
                   <h3>Build and verify</h3>
-                  <p>GitHub, Browser, Computer Use, and OpenAI Developers help Codex inspect code, test routes, and prove changes.</p>
+                  <p>Browser, GitHub, and Computer Use help Codex inspect a visible page, a project, or a desktop app and prove what changed.</p>
                   <span class="create-card-cta">Use for websites and app work →</span>
                 </article>
                 <article class="create-card">
@@ -448,31 +453,45 @@
             <section class="landing-section plugin-directory-section" id="plugin-directory" aria-labelledby="plugin-directory-title">
               <div class="directory-header">
                 <div>
-                  <p class="section-kicker">Complete Map</p>
-                  <h2 class="landing-section-title" id="plugin-directory-title">Which helper fits this job?</h2>
-                  <p>Do not memorize this list. Scan for where the work lives, pick a likely helper, and ask Codex to show its work.</p>
-                </div>
-                <div class="directory-count" aria-label="Plugin coverage">
-                  <strong id="pluginCount">0</strong>
-                  <span>helpers mapped</span>
+                  <p class="section-kicker">Helper Map</p>
+                  <h2 class="landing-section-title" id="plugin-directory-title">The full helper map now has its own place.</h2>
+                  <p>Do not memorize the list. Search by the job, open the helper guide, copy the starter prompt, and ask Codex to show its work.</p>
                 </div>
               </div>
               <div class="directory-principle">
                 <strong>Simple rule:</strong>
                 <span>If the work lives somewhere outside this chat, there may be a plugin for it. If it only lives in local files or plain text, normal Codex work may be enough.</span>
               </div>
-              <div class="plugin-directory-grid" id="pluginDirectory"></div>
-              <div class="section-mark-complete">
-                <button class="btn btn-secondary complete-btn" type="button" data-complete="directory">Mark directory reviewed</button>
+              <div class="helper-teaser-grid">
+                <a class="helper-teaser" href="./helpers/">
+                  <span>64</span>
+                  <strong>helpers mapped</strong>
+                  <p>Search across messages, meetings, files, websites, design, data, travel, shopping, and safety.</p>
+                </a>
+                <a class="helper-teaser" href="./helpers/slack/">
+                  <span>Example</span>
+                  <strong>Slack guide</strong>
+                  <p>See what a dedicated helper page looks like.</p>
+                </a>
+                <a class="helper-teaser" href="./chatgpt/">
+                  <span>Connect</span>
+                  <strong>Sign-in truth</strong>
+                  <p>Understand what the course can teach and what must happen inside ChatGPT or Codex.</p>
+                </a>
               </div>
             </section>
 
             <section class="landing-section glossary-page plugin-glossary" id="glossary" aria-labelledby="glossary-title">
               <header class="glossary-header">
-                <h1 id="glossary-title">Plain-English plugin glossary</h1>
+                <h1 id="glossary-title">Plain-English helper glossary</h1>
                 <p>Use these definitions when the names start blurring together.</p>
               </header>
               <div class="glossary-grid">
+                <article class="glossary-card">
+                  <h2>Helper</h2>
+                  <p>The normal-person word for the thing Codex uses to help with a task.</p>
+                  <p class="glossary-example">Example: “Use the meeting helper” is easier than naming the whole stack.</p>
+                </article>
                 <article class="glossary-card">
                   <h2>Plugin</h2>
                   <p>A kit Codex can use for a kind of work.</p>
@@ -501,7 +520,7 @@
               <div class="dashboard-stats">
                 <article class="stat-card">
                   <p class="stat-card-icon">Complete</p>
-                  <p class="stat-card-value" id="completeCount">0/5</p>
+                  <p class="stat-card-value" id="completeCount">0/4</p>
                   <p class="stat-card-label">Modules marked complete</p>
                 </article>
                 <article class="stat-card">
@@ -512,7 +531,7 @@
                 <article class="stat-card">
                   <p class="stat-card-icon">Setup</p>
                   <p class="stat-card-value" id="setupCount">0/5</p>
-                  <p class="stat-card-label">Plugin readiness checks</p>
+                  <p class="stat-card-label">Helper readiness checks</p>
                 </article>
                 <article class="stat-card">
                   <p class="stat-card-icon">Proof</p>
