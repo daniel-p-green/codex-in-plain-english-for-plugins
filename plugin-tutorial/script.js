@@ -5,6 +5,16 @@ let selectedScenarioId = localStorage.getItem("pluginCourseSelectedScenario") ||
 let promptCheckCount = 0;
 let promptMeasured = false;
 
+function setTheme(theme) {
+  const nextTheme = theme === "dark" ? "dark" : "light";
+  document.documentElement.dataset.theme = nextTheme;
+  localStorage.setItem("pluginCourseTheme", nextTheme);
+  const toggle = document.querySelector("[data-theme-toggle]");
+  if (toggle) {
+    toggle.setAttribute("aria-label", nextTheme === "light" ? "Switch to dark mode" : "Switch to light mode");
+  }
+}
+
 const scenarios = [
   {
     id: "event",
@@ -608,6 +618,15 @@ function wireMobileMenu() {
   });
 }
 
+function wireThemeToggle() {
+  setTheme(document.documentElement.dataset.theme);
+  const toggle = document.querySelector("[data-theme-toggle]");
+  if (!toggle) return;
+  toggle.addEventListener("click", () => {
+    setTheme(document.documentElement.dataset.theme === "light" ? "dark" : "light");
+  });
+}
+
 document.getElementById("promptForm").addEventListener("submit", (event) => {
   event.preventDefault();
   buildPrompt({ measure: true });
@@ -632,5 +651,6 @@ wireCompletion();
 wireMeasurementReset();
 wireActiveNav();
 wireMobileMenu();
+wireThemeToggle();
 buildPrompt({ measure: false });
 saveProgress();

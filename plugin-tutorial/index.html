@@ -8,6 +8,9 @@
       content="Codex in Plain English for Plugins: a course for normal people who want Codex to help across their apps without memorizing plugin names."
     />
     <title>Codex in Plain English for Plugins</title>
+    <script>
+      document.documentElement.dataset.theme = localStorage.getItem("pluginCourseTheme") || "light";
+    </script>
     <link rel="icon" href="./favicon-trex.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="./styles.css" />
   </head>
@@ -55,6 +58,10 @@
             <button class="top-nav-login" type="button" data-login-open aria-label="Sign in with ChatGPT">
               <span class="top-nav-login-full">Sign in</span>
               <span class="top-nav-login-compact">Sign in</span>
+            </button>
+            <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode">
+              <span class="theme-toggle-sun" aria-hidden="true">Light</span>
+              <span class="theme-toggle-moon" aria-hidden="true">Dark</span>
             </button>
             <a href="#router" class="top-nav-cta top-nav-continue" aria-label="Continue Codex in Plain English for Plugins">
               <span class="top-nav-cta-label top-nav-cta-label-full">Continue Course</span>
