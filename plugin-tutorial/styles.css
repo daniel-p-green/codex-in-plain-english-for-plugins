@@ -3276,6 +3276,10 @@ button {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
+.plugin-stack-grid .create-card:last-child {
+  grid-column: auto;
+}
+
 .proof-table-wrapper {
   margin-top: var(--space-6);
   max-width: 100%;
