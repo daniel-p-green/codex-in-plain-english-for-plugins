@@ -2035,7 +2035,7 @@ button {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: var(--space-3) var(--space-5);
   padding: var(--space-4) var(--space-5);
   text-align: left;
@@ -2046,9 +2046,17 @@ button {
   margin: var(--space-3) auto var(--space-8);
 }
 
+.footer-credit {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-width: 0;
+}
+
 .footer-byline {
   margin: 0;
   color: var(--text-700);
+  white-space: nowrap;
 }
 
 .footer-social-links {
@@ -2701,8 +2709,8 @@ button {
     padding: var(--space-4);
   }
 
-  .footer-social-links {
-    width: 100%;
+  .footer-credit {
+    flex-wrap: wrap;
   }
 }
 
