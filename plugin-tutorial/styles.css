@@ -2867,6 +2867,10 @@ html[data-theme="dark"] .theme-toggle-moon {
   margin-bottom: var(--space-5);
 }
 
+.plugin-readiness-grid {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
 .section-kicker {
   margin-bottom: var(--space-2);
   color: var(--blue-100);
