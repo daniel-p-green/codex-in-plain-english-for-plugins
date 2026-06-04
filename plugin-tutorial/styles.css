@@ -725,11 +725,14 @@ button {
   justify-content: flex-end;
   position: relative;
   overflow: hidden;
-  color: #f7fbff;
+  color: var(--text-900);
+  background: var(--surface-75);
 }
 
 .starter-card:hover {
-  color: #ffffff;
+  color: var(--text-1000);
+  border-color: color-mix(in srgb, var(--blue-200) 50%, var(--border-strong));
+  background: var(--surface-100);
 }
 
 .starter-card.locked {
@@ -742,10 +745,11 @@ button {
   font-size: 0.93rem;
   letter-spacing: 0;
   margin-bottom: var(--space-3);
-  color: #e8f5ff;
+  color: var(--blue-100);
 }
 
 .starter-card h3 {
+  color: var(--text-900);
   font-size: 2.75rem;
   line-height: 1.02;
   letter-spacing: 0;
@@ -759,24 +763,23 @@ button {
 
 .starter-card p {
   max-width: 90%;
-  color: rgba(248, 253, 255, 0.94);
+  color: var(--text-700);
   font-size: 0.95rem;
   text-wrap: pretty;
 }
 
 .starter-card-primary {
   background:
-    radial-gradient(circle at 10% 10%, rgba(244, 253, 255, 0.34), transparent 34%),
-    radial-gradient(circle at 45% 52%, rgba(146, 235, 204, 0.56), transparent 41%),
-    radial-gradient(circle at 90% 18%, rgba(130, 201, 255, 0.62), transparent 46%),
-    #63b3e5;
+    linear-gradient(135deg, color-mix(in srgb, var(--blue-200) 16%, transparent), transparent 44%),
+    var(--surface-75);
+  border-color: color-mix(in srgb, var(--blue-200) 32%, var(--border-soft));
 }
 
 .starter-card-secondary {
   background:
-    radial-gradient(circle at 20% 14%, rgba(255, 255, 255, 0.28), transparent 40%),
-    radial-gradient(circle at 84% 8%, rgba(124, 200, 255, 0.58), transparent 52%),
-    #5ca7da;
+    linear-gradient(135deg, color-mix(in srgb, var(--green-300) 10%, transparent), transparent 42%),
+    var(--surface-75);
+  border-color: color-mix(in srgb, var(--green-300) 24%, var(--border-soft));
 }
 
 .landing-create-grid {
