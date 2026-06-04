@@ -41,27 +41,9 @@
           </nav>
 
           <div class="top-nav-actions">
-            <div class="top-nav-progress" aria-label="Progress highlights">
-              <span class="top-nav-chip top-nav-chip-xp">
-                <span class="top-nav-chip-value" id="xpValue">0</span>
-                <span class="top-nav-chip-label">XP</span>
-              </span>
-              <span class="top-nav-chip top-nav-chip-level">
-                <span class="top-nav-chip-value" id="levelValue">Lv.1</span>
-                <span class="top-nav-chip-label">Level</span>
-              </span>
-              <span class="top-nav-chip top-nav-chip-streak">
-                <span class="top-nav-chip-value">🦖</span>
-                <span class="top-nav-chip-label">Course</span>
-              </span>
-            </div>
             <button class="top-nav-login" type="button" data-login-open aria-label="Sign in with ChatGPT">
               <span class="top-nav-login-full">Sign in</span>
               <span class="top-nav-login-compact">Sign in</span>
-            </button>
-            <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode">
-              <span class="theme-toggle-sun" aria-hidden="true">Light</span>
-              <span class="theme-toggle-moon" aria-hidden="true">Dark</span>
             </button>
             <a href="#router" class="top-nav-cta top-nav-continue" aria-label="Continue Codex in Plain English for Plugins">
               <span class="top-nav-cta-label top-nav-cta-label-full">Continue Course</span>
@@ -199,24 +181,6 @@
               <p class="course-clarity-glossary-link">
                 The job: describe the work in plain English, let Codex pick the helper, and ask for proof before you trust it.
               </p>
-            </section>
-
-            <section class="measurement-panel" aria-labelledby="measurement-title">
-              <div class="measurement-header">
-                <div>
-                  <p class="section-kicker">Milestones</p>
-                  <h2 id="measurement-title">How improvement is measured</h2>
-                  <p>Targets are tied to the job: describe the task, choose the right helper, keep private work safe, and know what proof to ask for.</p>
-                </div>
-                <div class="measurement-score" aria-label="Overall milestone score">
-                  <strong id="milestoneScore">0%</strong>
-                  <span>confidence</span>
-                </div>
-              </div>
-              <div class="measurement-actions">
-                <button class="btn btn-secondary" id="resetMeasurements" type="button">Reset measurements</button>
-              </div>
-              <div class="milestone-grid" id="milestoneGrid"></div>
             </section>
 
             <section class="module-orientation plugin-readiness" aria-label="Helper readiness model">
@@ -566,6 +530,24 @@
               </div>
             </section>
 
+            <section class="measurement-panel" aria-labelledby="measurement-title">
+              <div class="measurement-header">
+                <div>
+                  <p class="section-kicker">Milestones</p>
+                  <h2 id="measurement-title">How improvement is measured</h2>
+                  <p>Targets are tied to the job: describe the task, choose the right helper, keep private work safe, and know what proof to ask for.</p>
+                </div>
+                <div class="measurement-score" aria-label="Overall milestone score">
+                  <strong id="milestoneScore">0%</strong>
+                  <span>confidence</span>
+                </div>
+              </div>
+              <div class="measurement-actions">
+                <button class="btn btn-secondary" id="resetMeasurements" type="button">Reset measurements</button>
+              </div>
+              <div class="milestone-grid" id="milestoneGrid"></div>
+            </section>
+
             <section class="attribution-banner" aria-label="source attribution">
               <div class="attribution-banner-icon" aria-hidden="true">i</div>
               <div class="attribution-banner-main">
@@ -585,6 +567,10 @@
                   <a href="https://x.com/dgrreen" target="_blank" rel="me noopener">X</a>
                   <a href="https://www.linkedin.com/in/danielpgreen" target="_blank" rel="me noopener">LinkedIn</a>
                 </nav>
+                <button class="theme-toggle footer-theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode">
+                  <span class="theme-toggle-sun" aria-hidden="true">Light</span>
+                  <span class="theme-toggle-moon" aria-hidden="true">Dark</span>
+                </button>
               </div>
               <p class="footer-file-notice" id="serverNotice" hidden>
                 Opening this from a file?

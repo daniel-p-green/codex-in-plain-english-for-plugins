@@ -256,8 +256,10 @@ function saveProgress() {
   const pct = Math.round((completeCount / moduleIds.length) * 100);
   const xp = completeCount * 125 + answeredQuiz.size * 25;
   document.getElementById("progressText").textContent = `${pct}% complete`;
-  document.getElementById("xpValue").textContent = String(xp);
-  document.getElementById("levelValue").textContent = `Lv.${Math.max(1, Math.ceil((xp || 1) / 250))}`;
+  const xpValue = document.getElementById("xpValue");
+  const levelValue = document.getElementById("levelValue");
+  if (xpValue) xpValue.textContent = String(xp);
+  if (levelValue) levelValue.textContent = `Lv.${Math.max(1, Math.ceil((xp || 1) / 250))}`;
   document.getElementById("completeCount").textContent = `${completeCount}/${moduleIds.length}`;
   document.getElementById("quizCount").textContent = `${answeredQuiz.size}/${quizItems.length}`;
   const checked = [...document.querySelectorAll(".check-item input")].filter((item) => item.checked).length;
